@@ -13,4 +13,4 @@ services:
     volumes:
     - ./:/webapp/server/
     ports:
-      - "8001:80" # 내부 IP로 변경
+      - "172.22.0.1:8001:80"
