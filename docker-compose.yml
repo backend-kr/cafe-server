@@ -2,9 +2,7 @@ version: "3"
 
 services:
   django:
-    build:
-      context: .
-      dockerfile: Dockerfile
+    image: 221.155.148.197:5000/cafe_server-django:latest
     container_name: cafe-moa
     network_mode: bridge
     environment:
