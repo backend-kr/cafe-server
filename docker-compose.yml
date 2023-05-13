@@ -1,0 +1,16 @@
+version: "3"
+
+services:
+  django:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: cafe-moa
+    network_mode: bridge
+    environment:
+      - RUNNING_ENV=local
+      - TZ=Asia/Seoul
+    volumes:
+    - ./:/webapp/server/
+    ports:
+      - "8001:80" # 내부 IP로 변경

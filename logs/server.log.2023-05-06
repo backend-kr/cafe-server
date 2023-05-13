@@ -1,0 +1,407 @@
+[WARNING 23/Apr/2023 12:02:41,384 pid: 47808] "GET / HTTP/1.1" 404 2674
+[WARNING 23/Apr/2023 12:02:41,686 pid: 47808] "GET /favicon.ico HTTP/1.1" 404 2757
+[WARNING 23/Apr/2023 12:02:45,613 pid: 47808] "GET /swagger HTTP/1.1" 404 2741
+[WARNING 23/Apr/2023 12:02:54,568 pid: 47808] "GET /api/v1/swagger HTTP/1.1" 404 2769
+[WARNING 23/Apr/2023 12:02:57,333 pid: 47808] "GET /api/v1/docs HTTP/1.1" 404 2757
+[INFO 23/Apr/2023 12:02:59,629 pid: 47808] "GET /api/v1/docs/ HTTP/1.1" 200 2162
+[INFO 23/Apr/2023 12:02:59,798 pid: 47808] "GET /static/drf-yasg/style.css HTTP/1.1" 200 1047
+[INFO 23/Apr/2023 12:02:59,798 pid: 47808] "GET /static/drf-yasg/insQ.min.js HTTP/1.1" 200 2093
+[INFO 23/Apr/2023 12:02:59,802 pid: 47808] "GET /static/drf-yasg/swagger-ui-init.js HTTP/1.1" 200 14964
+[INFO 23/Apr/2023 12:02:59,804 pid: 47808] "GET /static/drf-yasg/immutable.min.js HTTP/1.1" 200 56904
+[INFO 23/Apr/2023 12:02:59,805 pid: 47808] "GET /static/drf-yasg/swagger-ui-dist/swagger-ui.css HTTP/1.1" 200 143858
+[INFO 23/Apr/2023 12:02:59,807 pid: 47808] "GET /static/drf-yasg/swagger-ui-dist/swagger-ui-standalone-preset.js HTTP/1.1" 200 324275
+[INFO 23/Apr/2023 12:02:59,812 pid: 47808] "GET /static/drf-yasg/swagger-ui-dist/swagger-ui-bundle.js HTTP/1.1" 200 1086481
+[INFO 23/Apr/2023 12:02:59,892 pid: 47808] "GET /static/drf-yasg/swagger-ui-dist/favicon-32x32.png HTTP/1.1" 200 628
+[INFO 23/Apr/2023 12:02:59,981 pid: 47808] "GET /api/v1/docs/?format=openapi HTTP/1.1" 200 870
+[INFO 23/Apr/2023 12:03:08,630 pid: 47808] "GET /api/v1/status/health-check HTTP/1.1" 200 0
+[WARNING 23/Apr/2023 12:26:07,874 pid: 50219] "GET / HTTP/1.1" 404 2834
+[WARNING 23/Apr/2023 12:26:08,260 pid: 50219] "GET / HTTP/1.1" 404 2834
+[INFO 23/Apr/2023 12:26:13,149 pid: 50219] "GET /api/v1/docs/ HTTP/1.1" 200 2162
+[INFO 23/Apr/2023 12:26:13,247 pid: 50219] "GET /static/drf-yasg/swagger-ui-dist/swagger-ui.css HTTP/1.1" 304 0
+[INFO 23/Apr/2023 12:26:13,252 pid: 50219] "GET /static/drf-yasg/swagger-ui-dist/swagger-ui-bundle.js HTTP/1.1" 304 0
+[INFO 23/Apr/2023 12:26:13,256 pid: 50219] "GET /static/drf-yasg/style.css HTTP/1.1" 304 0
+[INFO 23/Apr/2023 12:26:13,257 pid: 50219] "GET /static/drf-yasg/swagger-ui-dist/swagger-ui-standalone-preset.js HTTP/1.1" 304 0
+[INFO 23/Apr/2023 12:26:13,257 pid: 50219] "GET /static/drf-yasg/immutable.min.js HTTP/1.1" 304 0
+[INFO 23/Apr/2023 12:26:13,258 pid: 50219] "GET /static/drf-yasg/insQ.min.js HTTP/1.1" 304 0
+[INFO 23/Apr/2023 12:26:13,259 pid: 50219] "GET /static/drf-yasg/swagger-ui-init.js HTTP/1.1" 304 0
+[INFO 23/Apr/2023 12:26:13,455 pid: 50219] "GET /static/drf-yasg/swagger-ui-dist/favicon-32x32.png HTTP/1.1" 304 0
+[INFO 23/Apr/2023 12:26:13,539 pid: 50219] "GET /api/v1/docs/?format=openapi HTTP/1.1" 200 873
+[INFO 23/Apr/2023 12:26:22,807 pid: 50219] "GET /api/v1/docs/ HTTP/1.1" 200 2162
+[INFO 23/Apr/2023 12:26:23,045 pid: 50219] "GET /api/v1/docs/?format=openapi HTTP/1.1" 200 873
+[WARNING 23/Apr/2023 12:27:14,289 pid: 50219] "GET /api/v1/swagger/ HTTP/1.1" 404 2932
+[INFO 23/Apr/2023 12:27:17,252 pid: 50219] "GET /api/v1/docs/ HTTP/1.1" 200 2162
+[INFO 23/Apr/2023 12:27:17,437 pid: 50219] "GET /api/v1/docs/?format=openapi HTTP/1.1" 200 873
+[INFO 23/Apr/2023 12:28:44,030 pid: 50219] "GET /api/v1/docs/ HTTP/1.1" 200 2162
+[INFO 23/Apr/2023 12:28:44,268 pid: 50219] "GET /api/v1/docs/?format=openapi HTTP/1.1" 200 873
+[INFO 23/Apr/2023 12:28:46,769 pid: 50219] "GET /admin/login/?next=/api/v1/docs/ HTTP/1.1" 200 2230
+[INFO 23/Apr/2023 12:28:46,905 pid: 50219] "GET /static/admin/css/dark_mode.css HTTP/1.1" 200 796
+[INFO 23/Apr/2023 12:28:46,905 pid: 50219] "GET /static/admin/css/nav_sidebar.css HTTP/1.1" 200 2619
+[INFO 23/Apr/2023 12:28:46,908 pid: 50219] "GET /static/admin/js/nav_sidebar.js HTTP/1.1" 200 3763
+[INFO 23/Apr/2023 12:28:46,909 pid: 50219] "GET /static/admin/css/login.css HTTP/1.1" 200 958
+[INFO 23/Apr/2023 12:28:46,910 pid: 50219] "GET /static/admin/css/base.css HTTP/1.1" 200 20344
+[INFO 23/Apr/2023 12:28:46,910 pid: 50219] "GET /static/admin/css/responsive.css HTTP/1.1" 200 18854
+[INFO 23/Apr/2023 12:28:46,914 pid: 50219] "GET /static/admin/css/fonts.css HTTP/1.1" 200 423
+[INFO 23/Apr/2023 12:28:46,957 pid: 50219] "GET /static/admin/fonts/Roboto-Light-webfont.woff HTTP/1.1" 200 85692
+[INFO 23/Apr/2023 12:28:46,957 pid: 50219] "GET /static/admin/fonts/Roboto-Regular-webfont.woff HTTP/1.1" 200 85876
+[INFO 23/Apr/2023 12:28:49,817 pid: 50219] "POST /admin/login/?next=/api/v1/docs/ HTTP/1.1" 200 2403
+[INFO 23/Apr/2023 12:28:49,939 pid: 50219] "GET /static/admin/fonts/Roboto-Bold-webfont.woff HTTP/1.1" 200 86184
+[INFO 23/Apr/2023 12:31:59,207 pid: 50904] "GET /api/v1/docs/ HTTP/1.1" 200 2162
+[INFO 23/Apr/2023 12:31:59,298 pid: 50904] "GET /static/drf-yasg/swagger-ui-dist/swagger-ui.css HTTP/1.1" 304 0
+[INFO 23/Apr/2023 12:31:59,301 pid: 50904] "GET /static/drf-yasg/style.css HTTP/1.1" 304 0
+[INFO 23/Apr/2023 12:31:59,303 pid: 50904] "GET /static/drf-yasg/immutable.min.js HTTP/1.1" 304 0
+[INFO 23/Apr/2023 12:31:59,305 pid: 50904] "GET /static/drf-yasg/swagger-ui-init.js HTTP/1.1" 304 0
+[INFO 23/Apr/2023 12:31:59,306 pid: 50904] "GET /static/drf-yasg/swagger-ui-dist/swagger-ui-standalone-preset.js HTTP/1.1" 304 0
+[INFO 23/Apr/2023 12:31:59,309 pid: 50904] "GET /static/drf-yasg/insQ.min.js HTTP/1.1" 304 0
+[INFO 23/Apr/2023 12:31:59,311 pid: 50904] "GET /static/drf-yasg/swagger-ui-dist/swagger-ui-bundle.js HTTP/1.1" 304 0
+[INFO 23/Apr/2023 12:31:59,474 pid: 50904] "GET /static/drf-yasg/swagger-ui-dist/favicon-32x32.png HTTP/1.1" 304 0
+[INFO 23/Apr/2023 12:31:59,615 pid: 50904] "GET /api/v1/docs/?format=openapi HTTP/1.1" 200 873
+[INFO 23/Apr/2023 12:32:12,104 pid: 50946] "GET /api/v1/docs/ HTTP/1.1" 200 2162
+[INFO 23/Apr/2023 12:32:12,364 pid: 50946] "GET /api/v1/docs/?format=openapi HTTP/1.1" 200 873
+[INFO 23/Apr/2023 12:34:13,880 pid: 51139] "GET /api/v1/docs/ HTTP/1.1" 200 2162
+[INFO 23/Apr/2023 12:34:14,152 pid: 51139] "GET /api/v1/docs/?format=openapi HTTP/1.1" 200 873
+[INFO 23/Apr/2023 12:36:22,961 pid: 51375] "GET /api/v1/docs/ HTTP/1.1" 200 2162
+[INFO 23/Apr/2023 12:36:23,062 pid: 51375] "GET /static/drf-yasg/immutable.min.js HTTP/1.1" 304 0
+[INFO 23/Apr/2023 12:36:23,064 pid: 51375] "GET /static/drf-yasg/style.css HTTP/1.1" 304 0
+[INFO 23/Apr/2023 12:36:23,066 pid: 51375] "GET /static/drf-yasg/insQ.min.js HTTP/1.1" 304 0
+[INFO 23/Apr/2023 12:36:23,068 pid: 51375] "GET /static/drf-yasg/swagger-ui-dist/swagger-ui.css HTTP/1.1" 304 0
+[INFO 23/Apr/2023 12:36:23,069 pid: 51375] "GET /static/drf-yasg/swagger-ui-init.js HTTP/1.1" 304 0
+[INFO 23/Apr/2023 12:36:23,072 pid: 51375] "GET /static/drf-yasg/swagger-ui-dist/swagger-ui-bundle.js HTTP/1.1" 304 0
+[INFO 23/Apr/2023 12:36:23,079 pid: 51375] "GET /static/drf-yasg/swagger-ui-dist/swagger-ui-standalone-preset.js HTTP/1.1" 304 0
+[INFO 23/Apr/2023 12:36:23,126 pid: 51375] "GET /static/drf-yasg/swagger-ui-dist/favicon-32x32.png HTTP/1.1" 304 0
+[INFO 23/Apr/2023 12:36:23,185 pid: 51375] "GET /api/v1/docs/?format=openapi HTTP/1.1" 200 873
+[INFO 23/Apr/2023 12:36:24,025 pid: 51375] "GET /api/v1/docs/ HTTP/1.1" 200 2162
+[INFO 23/Apr/2023 12:36:24,255 pid: 51375] "GET /api/v1/docs/?format=openapi HTTP/1.1" 200 873
+[INFO 23/Apr/2023 12:36:24,618 pid: 51375] "GET /api/v1/docs/ HTTP/1.1" 200 2162
+[INFO 23/Apr/2023 12:36:24,779 pid: 51375] "GET /api/v1/docs/?format=openapi HTTP/1.1" 200 873
+[INFO 23/Apr/2023 12:36:25,122 pid: 51375] "GET /api/v1/docs/ HTTP/1.1" 200 2162
+[INFO 23/Apr/2023 12:36:25,283 pid: 51375] "GET /api/v1/docs/?format=openapi HTTP/1.1" 200 873
+[WARNING 23/Apr/2023 12:38:02,854 pid: 51537] "GET / HTTP/1.1" 404 2834
+[INFO 23/Apr/2023 12:38:06,199 pid: 51537] "GET /api/v1/docs/ HTTP/1.1" 200 2162
+[INFO 23/Apr/2023 12:38:06,559 pid: 51537] "GET /api/v1/docs/?format=openapi HTTP/1.1" 200 873
+[INFO 23/Apr/2023 12:48:01,098 pid: 52430] "GET /api/v1/docs/ HTTP/1.1" 200 2162
+[INFO 23/Apr/2023 12:48:01,197 pid: 52430] "GET /static/drf-yasg/swagger-ui-dist/swagger-ui.css HTTP/1.1" 304 0
+[INFO 23/Apr/2023 12:48:01,198 pid: 52430] "GET /static/drf-yasg/style.css HTTP/1.1" 304 0
+[INFO 23/Apr/2023 12:48:01,206 pid: 52430] "GET /static/drf-yasg/swagger-ui-init.js HTTP/1.1" 304 0
+[INFO 23/Apr/2023 12:48:01,207 pid: 52430] "GET /static/drf-yasg/swagger-ui-dist/swagger-ui-bundle.js HTTP/1.1" 304 0
+[INFO 23/Apr/2023 12:48:01,209 pid: 52430] "GET /static/drf-yasg/swagger-ui-dist/swagger-ui-standalone-preset.js HTTP/1.1" 304 0
+[INFO 23/Apr/2023 12:48:01,212 pid: 52430] "GET /static/drf-yasg/insQ.min.js HTTP/1.1" 304 0
+[INFO 23/Apr/2023 12:48:01,212 pid: 52430] "GET /static/drf-yasg/immutable.min.js HTTP/1.1" 304 0
+[INFO 23/Apr/2023 12:48:01,303 pid: 52430] "GET /static/drf-yasg/swagger-ui-dist/favicon-32x32.png HTTP/1.1" 304 0
+[INFO 23/Apr/2023 12:48:01,407 pid: 52430] "GET /api/v1/docs/?format=openapi HTTP/1.1" 200 873
+[WARNING 23/Apr/2023 12:48:41,467 pid: 52605] "GET /admin HTTP/1.1" 404 2893
+[WARNING 23/Apr/2023 12:48:44,902 pid: 52605] "GET /admin HTTP/1.1" 404 2893
+[INFO 23/Apr/2023 12:49:19,925 pid: 52605] "GET /admin/ HTTP/1.1" 302 0
+[INFO 23/Apr/2023 12:49:20,029 pid: 52605] "GET /admin/login/?next=/admin/ HTTP/1.1" 200 2218
+[INFO 23/Apr/2023 12:49:20,093 pid: 52605] "GET /static/admin/css/dark_mode.css HTTP/1.1" 304 0
+[INFO 23/Apr/2023 12:49:20,096 pid: 52605] "GET /static/admin/css/login.css HTTP/1.1" 304 0
+[INFO 23/Apr/2023 12:49:20,096 pid: 52605] "GET /static/admin/css/base.css HTTP/1.1" 304 0
+[INFO 23/Apr/2023 12:49:20,097 pid: 52605] "GET /static/admin/css/responsive.css HTTP/1.1" 304 0
+[INFO 23/Apr/2023 12:49:20,097 pid: 52605] "GET /static/admin/css/nav_sidebar.css HTTP/1.1" 304 0
+[INFO 23/Apr/2023 12:49:20,116 pid: 52605] "GET /static/admin/css/fonts.css HTTP/1.1" 304 0
+[INFO 23/Apr/2023 12:49:20,117 pid: 52605] "GET /static/admin/js/nav_sidebar.js HTTP/1.1" 304 0
+[INFO 23/Apr/2023 12:49:20,135 pid: 52605] "GET /static/admin/fonts/Roboto-Light-webfont.woff HTTP/1.1" 304 0
+[INFO 23/Apr/2023 12:49:20,136 pid: 52605] "GET /static/admin/fonts/Roboto-Regular-webfont.woff HTTP/1.1" 304 0
+[INFO 23/Apr/2023 12:49:24,537 pid: 52605] "POST /admin/login/?next=/admin/ HTTP/1.1" 302 0
+[INFO 23/Apr/2023 12:49:24,627 pid: 52605] "GET /admin/ HTTP/1.1" 200 4897
+[INFO 23/Apr/2023 12:49:24,682 pid: 52605] "GET /static/admin/css/dashboard.css HTTP/1.1" 200 380
+[INFO 23/Apr/2023 12:49:24,694 pid: 52605] "GET /static/admin/img/icon-addlink.svg HTTP/1.1" 200 331
+[INFO 23/Apr/2023 12:49:24,694 pid: 52605] "GET /static/admin/img/icon-changelink.svg HTTP/1.1" 200 380
+[INFO 23/Apr/2023 12:49:24,705 pid: 52605] "GET /static/admin/fonts/Roboto-Bold-webfont.woff HTTP/1.1" 304 0
+[INFO 23/Apr/2023 12:49:29,977 pid: 52605] "GET /admin/ HTTP/1.1" 200 4897
+[INFO 23/Apr/2023 12:49:37,261 pid: 52605] "GET /admin/auth/user/ HTTP/1.1" 200 9493
+[INFO 23/Apr/2023 12:49:37,330 pid: 52605] "GET /static/admin/css/changelists.css HTTP/1.1" 200 6395
+[INFO 23/Apr/2023 12:49:37,332 pid: 52605] "GET /static/admin/js/admin/RelatedObjectLookups.js HTTP/1.1" 200 8985
+[INFO 23/Apr/2023 12:49:37,334 pid: 52605] "GET /static/admin/js/jquery.init.js HTTP/1.1" 200 347
+[INFO 23/Apr/2023 12:49:37,334 pid: 52605] "GET /static/admin/js/core.js HTTP/1.1" 200 5698
+[INFO 23/Apr/2023 12:49:37,337 pid: 52605] "GET /static/admin/js/actions.js HTTP/1.1" 200 7872
+[INFO 23/Apr/2023 12:49:37,338 pid: 52605] "GET /static/admin/js/prepopulate.js HTTP/1.1" 200 1531
+[INFO 23/Apr/2023 12:49:37,339 pid: 52605] "GET /static/admin/js/urlify.js HTTP/1.1" 200 7902
+[INFO 23/Apr/2023 12:49:37,341 pid: 52605] "GET /static/admin/js/vendor/jquery/jquery.js HTTP/1.1" 200 288580
+[INFO 23/Apr/2023 12:49:37,343 pid: 52605] "GET /static/admin/js/vendor/xregexp/xregexp.js HTTP/1.1" 200 232381
+[INFO 23/Apr/2023 12:49:37,346 pid: 52605] "GET /static/admin/js/filters.js HTTP/1.1" 200 966
+[INFO 23/Apr/2023 12:49:37,354 pid: 52605] "GET /static/admin/img/search.svg HTTP/1.1" 200 458
+[INFO 23/Apr/2023 12:49:37,356 pid: 52605] "GET /admin/jsi18n/ HTTP/1.1" 200 3343
+[INFO 23/Apr/2023 12:49:37,357 pid: 52605] "GET /static/admin/img/icon-yes.svg HTTP/1.1" 200 436
+[INFO 23/Apr/2023 12:49:37,370 pid: 52605] "GET /static/admin/img/tooltag-add.svg HTTP/1.1" 200 331
+[INFO 23/Apr/2023 12:49:37,370 pid: 52605] "GET /static/admin/img/sorting-icons.svg HTTP/1.1" 200 1097
+[INFO 23/Apr/2023 12:49:38,778 pid: 52605] "GET /admin/ HTTP/1.1" 200 4897
+[INFO 23/Apr/2023 12:49:46,357 pid: 52605] "GET /api/v1/docs/ HTTP/1.1" 200 2390
+[INFO 23/Apr/2023 12:49:46,588 pid: 52605] "GET /api/v1/docs/?format=openapi HTTP/1.1" 200 3079
+[INFO 23/Apr/2023 12:50:49,369 pid: 52821] "GET /api/v1/docs/ HTTP/1.1" 200 2390
+[INFO 23/Apr/2023 12:50:49,638 pid: 52821] "GET /api/v1/docs/?format=openapi HTTP/1.1" 200 3079
+[INFO 23/Apr/2023 12:50:51,808 pid: 52821] "GET /admin/logout/?next=/api/v1/docs/ HTTP/1.1" 302 0
+[INFO 23/Apr/2023 12:50:51,815 pid: 52821] "GET /api/v1/docs/ HTTP/1.1" 200 2162
+[INFO 23/Apr/2023 12:50:52,000 pid: 52821] "GET /api/v1/docs/?format=openapi HTTP/1.1" 200 3079
+[INFO 23/Apr/2023 12:50:53,276 pid: 52821] "GET /api/v1/docs/ HTTP/1.1" 200 2162
+[INFO 23/Apr/2023 12:50:53,438 pid: 52821] "GET /api/v1/docs/?format=openapi HTTP/1.1" 200 3079
+[INFO 23/Apr/2023 12:51:19,620 pid: 52860] "GET /api/v1/docs/ HTTP/1.1" 200 2162
+[INFO 23/Apr/2023 12:51:19,818 pid: 52860] "GET /api/v1/docs/?format=openapi HTTP/1.1" 200 4103
+[INFO 23/Apr/2023 13:04:53,350 pid: 54184] "GET /api/v1/docs/ HTTP/1.1" 200 2162
+[INFO 23/Apr/2023 13:04:53,470 pid: 54184] "GET /static/drf-yasg/swagger-ui-dist/swagger-ui-bundle.js HTTP/1.1" 304 0
+[INFO 23/Apr/2023 13:04:53,470 pid: 54184] "GET /static/drf-yasg/swagger-ui-dist/swagger-ui-standalone-preset.js HTTP/1.1" 304 0
+[INFO 23/Apr/2023 13:04:53,471 pid: 54184] "GET /static/drf-yasg/style.css HTTP/1.1" 304 0
+[INFO 23/Apr/2023 13:04:53,471 pid: 54184] "GET /static/drf-yasg/insQ.min.js HTTP/1.1" 304 0
+[INFO 23/Apr/2023 13:04:53,471 pid: 54184] "GET /static/drf-yasg/swagger-ui-dist/swagger-ui.css HTTP/1.1" 304 0
+[INFO 23/Apr/2023 13:04:53,476 pid: 54184] "GET /static/drf-yasg/immutable.min.js HTTP/1.1" 304 0
+[INFO 23/Apr/2023 13:04:53,478 pid: 54184] "GET /static/drf-yasg/swagger-ui-init.js HTTP/1.1" 304 0
+[INFO 23/Apr/2023 13:04:53,607 pid: 54184] "GET /static/drf-yasg/swagger-ui-dist/favicon-32x32.png HTTP/1.1" 304 0
+[INFO 23/Apr/2023 13:04:53,788 pid: 54184] "GET /api/v1/docs/?format=openapi HTTP/1.1" 200 3487
+[INFO 23/Apr/2023 13:06:46,045 pid: 54441] "GET /api/v1/docs/ HTTP/1.1" 200 2162
+[INFO 23/Apr/2023 13:06:46,319 pid: 54441] "GET /api/v1/docs/?format=openapi HTTP/1.1" 200 3598
+[INFO 23/Apr/2023 13:07:24,447 pid: 54506] "GET /api/v1/docs/ HTTP/1.1" 200 2162
+[INFO 23/Apr/2023 13:07:24,717 pid: 54506] "GET /api/v1/docs/?format=openapi HTTP/1.1" 200 3110
+[WARNING 23/Apr/2023 13:10:02,746 pid: 54638] "POST /api/v1/cafe/ HTTP/1.1" 400 184
+[WARNING 23/Apr/2023 13:12:17,335 pid: 54888] "POST /api/v1/cafe/ HTTP/1.1" 400 184
+[WARNING 23/Apr/2023 13:14:31,601 pid: 55161] "POST /api/v1/cafe/ HTTP/1.1" 400 46
+[WARNING 23/Apr/2023 13:16:15,582 pid: 55161] "POST /api/v1/cafe/ HTTP/1.1" 400 46
+[WARNING 23/Apr/2023 13:17:22,120 pid: 55524] "POST /api/v1/cafe/ HTTP/1.1" 400 46
+[WARNING 23/Apr/2023 13:19:24,550 pid: 55524] "POST /api/v1/cafe/ HTTP/1.1" 400 46
+[WARNING 23/Apr/2023 13:22:53,016 pid: 56046] "POST /api/v1/cafe/ HTTP/1.1" 400 46
+[WARNING 23/Apr/2023 13:25:50,020 pid: 56408] "POST /api/v1/cafe/ HTTP/1.1" 400 46
+[INFO 23/Apr/2023 13:26:06,665 pid: 56408] "GET /api/v1/docs/ HTTP/1.1" 200 2162
+[INFO 23/Apr/2023 13:26:06,799 pid: 56408] "GET /static/drf-yasg/swagger-ui-dist/swagger-ui.css HTTP/1.1" 304 0
+[INFO 23/Apr/2023 13:26:06,801 pid: 56408] "GET /static/drf-yasg/style.css HTTP/1.1" 304 0
+[INFO 23/Apr/2023 13:26:06,808 pid: 56408] "GET /static/drf-yasg/swagger-ui-init.js HTTP/1.1" 304 0
+[INFO 23/Apr/2023 13:26:06,808 pid: 56408] "GET /static/drf-yasg/swagger-ui-dist/swagger-ui-standalone-preset.js HTTP/1.1" 304 0
+[INFO 23/Apr/2023 13:26:06,812 pid: 56408] "GET /static/drf-yasg/insQ.min.js HTTP/1.1" 304 0
+[INFO 23/Apr/2023 13:26:06,813 pid: 56408] "GET /static/drf-yasg/immutable.min.js HTTP/1.1" 304 0
+[INFO 23/Apr/2023 13:26:06,814 pid: 56408] "GET /static/drf-yasg/swagger-ui-dist/swagger-ui-bundle.js HTTP/1.1" 304 0
+[INFO 23/Apr/2023 13:26:06,882 pid: 56408] "GET /static/drf-yasg/swagger-ui-dist/favicon-32x32.png HTTP/1.1" 304 0
+[INFO 23/Apr/2023 13:26:07,025 pid: 56408] "GET /api/v1/docs/?format=openapi HTTP/1.1" 200 3372
+[WARNING 23/Apr/2023 13:26:49,120 pid: 56408] "POST /api/v1/cafe/ HTTP/1.1" 400 46
+[WARNING 23/Apr/2023 13:27:41,600 pid: 56585] "POST /api/v1/cafe/ HTTP/1.1" 400 46
+[WARNING 23/Apr/2023 13:27:53,123 pid: 56585] "POST /api/v1/cafe/ HTTP/1.1" 400 46
+[WARNING 23/Apr/2023 13:29:06,514 pid: 56585] "POST /api/v1/cafe/ HTTP/1.1" 400 46
+[WARNING 23/Apr/2023 13:31:42,284 pid: 56585] "POST /api/v1/naver/ HTTP/1.1" 403 2870
+[ERROR 23/Apr/2023 13:38:15,876 pid: 57659] "POST /api/v1/cafe/ HTTP/1.1" 500 142559
+[INFO 23/Apr/2023 13:44:52,297 pid: 58336] "POST /api/v1/cafe/ HTTP/1.1" 201 497
+[INFO 23/Apr/2023 13:50:50,016 pid: 58938] "GET /api/v1/docs/ HTTP/1.1" 200 2162
+[INFO 23/Apr/2023 13:50:50,120 pid: 58938] "GET /static/drf-yasg/swagger-ui-dist/swagger-ui-bundle.js HTTP/1.1" 304 0
+[INFO 23/Apr/2023 13:50:50,123 pid: 58938] "GET /static/drf-yasg/style.css HTTP/1.1" 304 0
+[INFO 23/Apr/2023 13:50:50,129 pid: 58938] "GET /static/drf-yasg/insQ.min.js HTTP/1.1" 304 0
+[INFO 23/Apr/2023 13:50:50,130 pid: 58938] "GET /static/drf-yasg/swagger-ui-dist/swagger-ui-standalone-preset.js HTTP/1.1" 304 0
+[INFO 23/Apr/2023 13:50:50,131 pid: 58938] "GET /static/drf-yasg/immutable.min.js HTTP/1.1" 304 0
+[INFO 23/Apr/2023 13:50:50,132 pid: 58938] "GET /static/drf-yasg/swagger-ui-dist/swagger-ui.css HTTP/1.1" 304 0
+[INFO 23/Apr/2023 13:50:50,132 pid: 58938] "GET /static/drf-yasg/swagger-ui-init.js HTTP/1.1" 304 0
+[INFO 23/Apr/2023 13:50:50,182 pid: 58938] "GET /static/drf-yasg/swagger-ui-dist/favicon-32x32.png HTTP/1.1" 304 0
+[INFO 23/Apr/2023 13:50:50,298 pid: 58938] "GET /api/v1/docs/?format=openapi HTTP/1.1" 200 3969
+[INFO 23/Apr/2023 13:51:04,193 pid: 59015] "GET /api/v1/docs/ HTTP/1.1" 200 2162
+[INFO 23/Apr/2023 13:51:04,445 pid: 59015] "GET /api/v1/docs/?format=openapi HTTP/1.1" 200 3969
+[INFO 23/Apr/2023 13:51:14,069 pid: 59015] "GET /api/v1/docs/ HTTP/1.1" 200 2162
+[INFO 23/Apr/2023 13:51:14,350 pid: 59015] "GET /api/v1/docs/?format=openapi HTTP/1.1" 200 3969
+[INFO 23/Apr/2023 13:54:34,277 pid: 59382] "GET /api/v1/docs/ HTTP/1.1" 200 2162
+[INFO 23/Apr/2023 13:54:34,690 pid: 59382] "GET /api/v1/docs/?format=openapi HTTP/1.1" 200 4521
+[ERROR 23/Apr/2023 13:55:53,452 pid: 59506] "POST /api/v1/cafe/ HTTP/1.1" 500 120199
+[ERROR 23/Apr/2023 13:57:24,276 pid: 59573] "POST /api/v1/cafe/ HTTP/1.1" 500 120199
+[INFO 23/Apr/2023 14:07:04,749 pid: 60582] "POST /api/v1/cafe/ HTTP/1.1" 201 497
+[INFO 23/Apr/2023 14:08:28,762 pid: 60781] "POST /api/v1/cafe/ HTTP/1.1" 201 497
+[INFO 23/Apr/2023 14:11:05,603 pid: 61017] "GET /api/v1/docs/ HTTP/1.1" 200 2162
+[INFO 23/Apr/2023 14:11:05,739 pid: 61017] "GET /static/drf-yasg/swagger-ui-dist/swagger-ui.css HTTP/1.1" 304 0
+[INFO 23/Apr/2023 14:11:05,741 pid: 61017] "GET /static/drf-yasg/style.css HTTP/1.1" 304 0
+[INFO 23/Apr/2023 14:11:05,743 pid: 61017] "GET /static/drf-yasg/immutable.min.js HTTP/1.1" 304 0
+[INFO 23/Apr/2023 14:11:05,744 pid: 61017] "GET /static/drf-yasg/swagger-ui-init.js HTTP/1.1" 304 0
+[INFO 23/Apr/2023 14:11:05,746 pid: 61017] "GET /static/drf-yasg/swagger-ui-dist/swagger-ui-standalone-preset.js HTTP/1.1" 304 0
+[INFO 23/Apr/2023 14:11:05,746 pid: 61017] "GET /static/drf-yasg/swagger-ui-dist/swagger-ui-bundle.js HTTP/1.1" 304 0
+[INFO 23/Apr/2023 14:11:05,746 pid: 61017] "GET /static/drf-yasg/insQ.min.js HTTP/1.1" 304 0
+[INFO 23/Apr/2023 14:11:05,827 pid: 61017] "GET /static/drf-yasg/swagger-ui-dist/favicon-32x32.png HTTP/1.1" 304 0
+[INFO 23/Apr/2023 14:11:05,924 pid: 61017] "GET /api/v1/docs/?format=openapi HTTP/1.1" 200 3696
+[INFO 23/Apr/2023 14:11:38,438 pid: 61017] "POST /api/v1/cafe/ HTTP/1.1" 201 497
+[INFO 23/Apr/2023 14:13:11,869 pid: 61224] "GET /api/v1/docs/ HTTP/1.1" 200 2162
+[ERROR 23/Apr/2023 14:13:12,200 pid: 61224] "GET /api/v1/docs/?format=openapi HTTP/1.1" 500 212491
+[INFO 23/Apr/2023 14:13:41,544 pid: 61312] "GET /api/v1/docs/ HTTP/1.1" 200 2162
+[ERROR 23/Apr/2023 14:13:41,836 pid: 61312] "GET /api/v1/docs/?format=openapi HTTP/1.1" 500 212533
+[INFO 23/Apr/2023 14:13:56,663 pid: 61335] "GET /api/v1/docs/ HTTP/1.1" 200 2162
+[INFO 23/Apr/2023 14:13:57,082 pid: 61335] "GET /api/v1/docs/?format=openapi HTTP/1.1" 200 3247
+[INFO 23/Apr/2023 14:14:30,375 pid: 61397] "GET /api/v1/docs/ HTTP/1.1" 200 2162
+[ERROR 23/Apr/2023 14:14:30,686 pid: 61397] "GET /api/v1/docs/?format=openapi HTTP/1.1" 500 212652
+[INFO 23/Apr/2023 14:14:37,412 pid: 61397] "GET /api/v1/docs/ HTTP/1.1" 200 2162
+[INFO 23/Apr/2023 14:16:00,665 pid: 61428] "GET /api/v1/docs/ HTTP/1.1" 200 2162
+[INFO 23/Apr/2023 14:16:00,897 pid: 61428] "GET /api/v1/docs/?format=openapi HTTP/1.1" 200 3247
+[WARNING 23/Apr/2023 14:16:58,915 pid: 61428] "POST /api/v1/cafe/ HTTP/1.1" 400 46
+[WARNING 23/Apr/2023 14:17:13,234 pid: 61428] "POST /api/v1/cafe/ HTTP/1.1" 400 46
+[WARNING 23/Apr/2023 14:17:28,443 pid: 61716] "POST /api/v1/cafe/ HTTP/1.1" 400 46
+[INFO 23/Apr/2023 14:17:53,803 pid: 61764] "POST /api/v1/cafe/ HTTP/1.1" 201 497
+[INFO 23/Apr/2023 14:18:47,903 pid: 61764] "POST /api/v1/cafe/ HTTP/1.1" 201 497
+[INFO 23/Apr/2023 14:24:53,676 pid: 62461] "POST /api/v1/cafe/ HTTP/1.1" 201 497
+[INFO 23/Apr/2023 14:25:30,529 pid: 62461] "POST /api/v1/cafe/ HTTP/1.1" 201 498
+[INFO 23/Apr/2023 14:25:38,064 pid: 62461] "POST /api/v1/cafe/ HTTP/1.1" 201 498
+[INFO 23/Apr/2023 14:28:14,011 pid: 62822] "POST /api/v1/cafe/ HTTP/1.1" 201 498
+[INFO 23/Apr/2023 14:28:17,768 pid: 62822] "POST /api/v1/cafe/ HTTP/1.1" 201 498
+[INFO 23/Apr/2023 14:41:11,917 pid: 64156] "POST /api/v1/cafe/ HTTP/1.1" 201 498
+[INFO 23/Apr/2023 14:41:32,220 pid: 64156] "POST /api/v1/cafe/ HTTP/1.1" 201 498
+[INFO 23/Apr/2023 14:41:59,361 pid: 64244] "POST /api/v1/cafe/ HTTP/1.1" 201 498
+[INFO 23/Apr/2023 14:43:02,047 pid: 64365] "POST /api/v1/cafe/ HTTP/1.1" 201 498
+[ERROR 23/Apr/2023 14:46:17,791 pid: 64639] "POST /api/v1/cafe/ HTTP/1.1" 500 112159
+[INFO 23/Apr/2023 14:46:36,969 pid: 64715] "POST /api/v1/cafe/ HTTP/1.1" 201 498
+[INFO 23/Apr/2023 14:48:30,129 pid: 64887] "POST /api/v1/cafe/ HTTP/1.1" 201 498
+[INFO 23/Apr/2023 14:48:51,732 pid: 64887] "POST /api/v1/cafe/ HTTP/1.1" 201 498
+[INFO 23/Apr/2023 14:50:22,479 pid: 65091] "GET /api/v1/docs/ HTTP/1.1" 200 2162
+[INFO 23/Apr/2023 14:50:22,593 pid: 65091] "GET /static/drf-yasg/swagger-ui-dist/swagger-ui.css HTTP/1.1" 304 0
+[INFO 23/Apr/2023 14:50:22,593 pid: 65091] "GET /static/drf-yasg/immutable.min.js HTTP/1.1" 304 0
+[INFO 23/Apr/2023 14:50:22,594 pid: 65091] "GET /static/drf-yasg/insQ.min.js HTTP/1.1" 304 0
+[INFO 23/Apr/2023 14:50:22,594 pid: 65091] "GET /static/drf-yasg/swagger-ui-dist/swagger-ui-standalone-preset.js HTTP/1.1" 304 0
+[INFO 23/Apr/2023 14:50:22,595 pid: 65091] "GET /static/drf-yasg/style.css HTTP/1.1" 304 0
+[INFO 23/Apr/2023 14:50:22,596 pid: 65091] "GET /static/drf-yasg/swagger-ui-init.js HTTP/1.1" 304 0
+[INFO 23/Apr/2023 14:50:22,600 pid: 65091] "GET /static/drf-yasg/swagger-ui-dist/swagger-ui-bundle.js HTTP/1.1" 304 0
+[INFO 23/Apr/2023 14:50:22,771 pid: 65091] "GET /static/drf-yasg/swagger-ui-dist/favicon-32x32.png HTTP/1.1" 304 0
+[INFO 23/Apr/2023 14:50:22,897 pid: 65091] "GET /api/v1/docs/?format=openapi HTTP/1.1" 200 3696
+[INFO 23/Apr/2023 14:53:43,175 pid: 65418] "GET /api/v1/docs/ HTTP/1.1" 200 2162
+[ERROR 23/Apr/2023 14:53:43,530 pid: 65418] "GET /api/v1/docs/?format=openapi HTTP/1.1" 500 216493
+[INFO 23/Apr/2023 14:54:05,156 pid: 65464] "GET /api/v1/docs/ HTTP/1.1" 200 2162
+[INFO 23/Apr/2023 14:54:05,383 pid: 65464] "GET /api/v1/docs/?format=openapi HTTP/1.1" 200 3247
+[WARNING 23/Apr/2023 14:54:25,137 pid: 65464] "POST /api/v1/cafe/ HTTP/1.1" 400 46
+[WARNING 23/Apr/2023 14:55:56,291 pid: 65464] "POST /api/v1/cafe/ HTTP/1.1" 400 46
+[INFO 23/Apr/2023 14:57:25,077 pid: 65788] "GET /api/v1/docs/ HTTP/1.1" 200 2162
+[ERROR 23/Apr/2023 14:57:25,558 pid: 65788] "GET /api/v1/docs/?format=openapi HTTP/1.1" 500 212652
+[INFO 23/Apr/2023 14:57:36,736 pid: 65813] "GET /api/v1/docs/ HTTP/1.1" 200 2162
+[INFO 23/Apr/2023 14:57:36,953 pid: 65813] "GET /api/v1/docs/?format=openapi HTTP/1.1" 200 3247
+[ERROR 23/Apr/2023 14:58:23,528 pid: 65875] "POST /api/v1/cafe/ HTTP/1.1" 500 23432
+[WARNING 23/Apr/2023 14:59:47,836 pid: 65998] "POST /api/v1/cafe/ HTTP/1.1" 400 121
+[WARNING 23/Apr/2023 15:00:08,465 pid: 65998] "POST /api/v1/cafe/ HTTP/1.1" 400 46
+[WARNING 23/Apr/2023 15:03:09,730 pid: 65998] "POST /api/v1/cafe/ HTTP/1.1" 400 46
+[INFO 23/Apr/2023 15:04:42,624 pid: 66519] "GET /api/v1/docs/ HTTP/1.1" 200 2162
+[INFO 23/Apr/2023 15:04:42,918 pid: 66519] "GET /api/v1/docs/?format=openapi HTTP/1.1" 200 3795
+[WARNING 23/Apr/2023 15:05:00,684 pid: 66519] "POST /api/v1/cafe/ HTTP/1.1" 400 46
+[INFO 23/Apr/2023 15:07:28,222 pid: 66519] "GET /api/v1/docs/ HTTP/1.1" 200 2162
+[INFO 23/Apr/2023 15:07:28,449 pid: 66519] "GET /api/v1/docs/?format=openapi HTTP/1.1" 200 3795
+[INFO 23/Apr/2023 15:08:49,878 pid: 66944] "GET /api/v1/docs/ HTTP/1.1" 200 2162
+[INFO 23/Apr/2023 15:08:49,985 pid: 66944] "GET /static/drf-yasg/style.css HTTP/1.1" 304 0
+[INFO 23/Apr/2023 15:08:49,992 pid: 66944] "GET /static/drf-yasg/swagger-ui-dist/swagger-ui.css HTTP/1.1" 304 0
+[INFO 23/Apr/2023 15:08:49,996 pid: 66944] "GET /static/drf-yasg/swagger-ui-dist/swagger-ui-standalone-preset.js HTTP/1.1" 304 0
+[INFO 23/Apr/2023 15:08:50,000 pid: 66944] "GET /static/drf-yasg/swagger-ui-dist/swagger-ui-bundle.js HTTP/1.1" 304 0
+[INFO 23/Apr/2023 15:08:50,001 pid: 66944] "GET /static/drf-yasg/immutable.min.js HTTP/1.1" 304 0
+[INFO 23/Apr/2023 15:08:50,002 pid: 66944] "GET /static/drf-yasg/insQ.min.js HTTP/1.1" 304 0
+[INFO 23/Apr/2023 15:08:50,005 pid: 66944] "GET /static/drf-yasg/swagger-ui-init.js HTTP/1.1" 304 0
+[INFO 23/Apr/2023 15:08:50,045 pid: 66944] "GET /static/drf-yasg/swagger-ui-dist/favicon-32x32.png HTTP/1.1" 304 0
+[INFO 23/Apr/2023 15:08:50,169 pid: 66944] "GET /api/v1/docs/?format=openapi HTTP/1.1" 200 3247
+[WARNING 23/Apr/2023 15:09:49,733 pid: 66944] "POST /api/v1/cafe/ HTTP/1.1" 400 46
+[INFO 23/Apr/2023 15:10:26,540 pid: 67089] "GET /api/v1/docs/ HTTP/1.1" 200 2162
+[INFO 23/Apr/2023 15:10:26,794 pid: 67089] "GET /api/v1/docs/?format=openapi HTTP/1.1" 200 3696
+[INFO 23/Apr/2023 15:10:41,480 pid: 67089] "POST /api/v1/cafe/ HTTP/1.1" 201 498
+[INFO 23/Apr/2023 15:17:33,971 pid: 67089] "POST /api/v1/cafe/ HTTP/1.1" 201 498
+[WARNING 23/Apr/2023 15:20:54,496 pid: 68074] "POST /api/v1/cafe/ HTTP/1.1" 400 89
+[INFO 23/Apr/2023 15:21:13,738 pid: 68074] "POST /api/v1/cafe/ HTTP/1.1" 201 498
+[INFO 23/Apr/2023 15:23:37,305 pid: 68377] "GET /api/v1/docs/ HTTP/1.1" 200 2162
+[INFO 23/Apr/2023 15:23:37,613 pid: 68377] "GET /api/v1/docs/?format=openapi HTTP/1.1" 200 3148
+[INFO 23/Apr/2023 15:23:47,972 pid: 68377] "POST /api/v1/cafe/ HTTP/1.1" 201 314
+[INFO 23/Apr/2023 15:24:15,184 pid: 68377] "POST /api/v1/cafe/ HTTP/1.1" 201 314
+[INFO 23/Apr/2023 15:24:24,175 pid: 68377] "GET /api/v1/docs/ HTTP/1.1" 200 2162
+[INFO 23/Apr/2023 15:24:24,401 pid: 68377] "GET /api/v1/docs/?format=openapi HTTP/1.1" 200 3148
+[INFO 23/Apr/2023 15:24:51,378 pid: 68532] "GET /api/v1/docs/ HTTP/1.1" 200 2162
+[INFO 23/Apr/2023 15:24:51,612 pid: 68532] "GET /api/v1/docs/?format=openapi HTTP/1.1" 200 3148
+[INFO 23/Apr/2023 15:25:12,493 pid: 68576] "GET /api/v1/docs/ HTTP/1.1" 200 2162
+[ERROR 23/Apr/2023 15:25:12,832 pid: 68576] "GET /api/v1/docs/?format=openapi HTTP/1.1" 500 216493
+[INFO 23/Apr/2023 15:26:58,150 pid: 68758] "GET /api/v1/docs/ HTTP/1.1" 200 2162
+[INFO 23/Apr/2023 15:26:58,432 pid: 68758] "GET /api/v1/docs/?format=openapi HTTP/1.1" 200 3247
+[WARNING 23/Apr/2023 15:27:08,579 pid: 68758] "POST /api/v1/cafe/ HTTP/1.1" 400 46
+[INFO 23/Apr/2023 15:28:08,337 pid: 68914] "GET /api/v1/docs/ HTTP/1.1" 200 2162
+[INFO 23/Apr/2023 15:28:08,595 pid: 68914] "GET /api/v1/docs/?format=openapi HTTP/1.1" 200 3229
+[INFO 23/Apr/2023 15:28:12,419 pid: 68914] "POST /api/v1/cafe/ HTTP/1.1" 201 314
+[INFO 23/Apr/2023 15:29:29,413 pid: 68914] "POST /api/v1/cafe/ HTTP/1.1" 201 314
+[INFO 23/Apr/2023 15:29:48,126 pid: 68914] "POST /api/v1/cafe/ HTTP/1.1" 201 314
+[INFO 06/May/2023 15:35:40,353 pid: 71409] code 400, message Bad request version ('à')
+[ERROR 06/May/2023 15:35:40,353 pid: 71409] You're accessing the development server over HTTPS, but it only supports HTTP.
+[INFO 06/May/2023 15:35:40,355 pid: 71409] code 400, message Bad request version ('\x00\x02\x01\x00\x00\x05\x00\x05\x01\x00\x00\x00\x00\x00\x17\x00\x00\x00')
+[ERROR 06/May/2023 15:35:40,355 pid: 71409] You're accessing the development server over HTTPS, but it only supports HTTP.
+[INFO 06/May/2023 15:37:51,543 pid: 71616] code 400, message Bad request syntax ('\x16\x03\x01\x02\x00\x01\x00\x01ü\x03\x03Îv\x13Ü\x90\x16ÆÈÍ\x01åÌ\x9cMT±\x13O¢üP')
+[ERROR 06/May/2023 15:37:51,544 pid: 71616] You're accessing the development server over HTTPS, but it only supports HTTP.
+[INFO 06/May/2023 15:37:51,546 pid: 71616] code 400, message Bad HTTP/0.9 request type ('\x16\x03\x01\x02\x00\x01\x00\x01ü\x03\x03þ\xad\x7f:>\x03"×xÓ6üAÁº"í\x9dó|·\x8b«Ofgîÿºq{¬')
+[ERROR 06/May/2023 15:37:51,546 pid: 71616] You're accessing the development server over HTTPS, but it only supports HTTP.
+[INFO 06/May/2023 15:37:53,581 pid: 71616] code 400, message Bad HTTP/0.9 request type ('\x16\x03\x01\x02\x00\x01\x00\x01ü\x03\x03¿Á®/·l')
+[ERROR 06/May/2023 15:37:53,582 pid: 71616] You're accessing the development server over HTTPS, but it only supports HTTP.
+[INFO 06/May/2023 15:37:53,583 pid: 71616] code 400, message Bad request version ('³\x17v_\x00\x05\x00\x05\x01\x00\x00\x00\x00\x00-\x00\x02\x01\x01\x00\x17\x00\x00ÿ\x01\x00\x01\x00\x00')
+[ERROR 06/May/2023 15:37:53,584 pid: 71616] You're accessing the development server over HTTPS, but it only supports HTTP.
+[INFO 06/May/2023 15:40:31,668 pid: 71911] code 400, message Bad request version ('\x00\x12\x00\x10\x04\x03\x08\x04\x04\x01\x05\x03\x08\x05\x05\x01\x08\x06\x06\x01\x00\x12\x00\x00\x00-\x00\x02\x01\x01\x00')
+[ERROR 06/May/2023 15:40:31,669 pid: 71911] You're accessing the development server over HTTPS, but it only supports HTTP.
+[INFO 06/May/2023 15:40:31,671 pid: 71911] code 400, message Bad request version ('\x00\x14\x00\x12\x04\x03\x08\x04\x04\x01\x05\x03\x08\x05\x05\x01\x08\x06\x06\x01\x02\x01\x00')
+[ERROR 06/May/2023 15:40:31,671 pid: 71911] You're accessing the development server over HTTPS, but it only supports HTTP.
+[INFO 06/May/2023 15:40:32,795 pid: 71911] code 400, message Bad HTTP/0.9 request type ("\x16\x03\x01\x02\x00\x01\x00\x01ü\x03\x03éãðÌ'Nw\x9eU\x06\x84í\x8aÂ½uµGßþµ\x91\x9e\x99\x89\\\x9c]©{FÛ")
+[ERROR 06/May/2023 15:40:32,795 pid: 71911] You're accessing the development server over HTTPS, but it only supports HTTP.
+[INFO 06/May/2023 15:40:32,796 pid: 71911] code 400, message Bad request version ('\x02h2\x08http/1.1\x00')
+[ERROR 06/May/2023 15:40:32,796 pid: 71911] You're accessing the development server over HTTPS, but it only supports HTTP.
+[INFO 06/May/2023 15:43:24,024 pid: 72220] code 400, message Bad request version ('\x00\x12\x00\x10\x04\x03\x08\x04\x04\x01\x05\x03\x08\x05\x05\x01\x08\x06\x06\x01\x00\x12\x00\x00\x00-\x00\x02\x01\x01\x00')
+[ERROR 06/May/2023 15:43:24,025 pid: 72220] You're accessing the development server over HTTPS, but it only supports HTTP.
+[INFO 06/May/2023 15:43:24,026 pid: 72220] code 400, message Bad request syntax ('\x16\x03\x01\x02\x00\x01\x00\x01ü\x03\x03ÎL2ë\x85')
+[ERROR 06/May/2023 15:43:24,028 pid: 72220] You're accessing the development server over HTTPS, but it only supports HTTP.
+[INFO 06/May/2023 15:43:32,854 pid: 72220] code 400, message Bad request version ('ªª\x13\x01\x13\x02\x13\x03À+À/À,À0Ì©Ì¨À\x13À\x14\x00\x9c\x00\x9d\x00/\x005\x01\x00\x01\x93ÚÚ\x00\x00\x00\x12\x00\x00\x00#\x00\x00\x00')
+[ERROR 06/May/2023 15:43:32,854 pid: 72220] You're accessing the development server over HTTPS, but it only supports HTTP.
+[INFO 06/May/2023 15:43:32,855 pid: 72220] code 400, message Bad request version ('ù,\x82B\x12\x01_(Ò\x9c$ÄÖ\x8bØ:èßA!ng\x9fA&ÍT¡R`\x12?\x00')
+[ERROR 06/May/2023 15:43:32,855 pid: 72220] You're accessing the development server over HTTPS, but it only supports HTTP.
+[INFO 06/May/2023 15:43:32,856 pid: 72220] code 400, message Bad request version ('\x00\x12\x00\x10\x04\x03\x08\x04\x04\x01\x05\x03\x08\x05\x05\x01\x08\x06\x06\x01Di\x00\x05\x00\x03\x02h2\x00+\x00\x07\x06ÚÚ\x03\x04\x03\x03\x00')
+[ERROR 06/May/2023 15:43:32,857 pid: 72220] You're accessing the development server over HTTPS, but it only supports HTTP.
+[INFO 06/May/2023 15:43:32,859 pid: 72220] code 400, message Bad request version ('ÚÚ\x13\x01\x13\x02\x13\x03À+À/À,À0Ì©Ì¨À\x13À\x14\x00\x9c\x00\x9d\x00/\x005\x01\x00\x01\x93zz\x00\x00\x00-\x00\x02\x01\x01\x00')
+[ERROR 06/May/2023 15:43:32,859 pid: 72220] You're accessing the development server over HTTPS, but it only supports HTTP.
+[INFO 06/May/2023 15:43:44,978 pid: 72220] code 400, message Bad request version ('\x00\x12\x00\x10\x04\x03\x08\x04\x04\x01\x05\x03\x08\x05\x05\x01\x08\x06\x06\x01\x00')
+[ERROR 06/May/2023 15:43:44,978 pid: 72220] You're accessing the development server over HTTPS, but it only supports HTTP.
+[INFO 06/May/2023 15:43:44,979 pid: 72220] code 400, message Bad request syntax ('\x16\x03\x01\x02\x00\x01\x00\x01ü\x03\x03¸')
+[ERROR 06/May/2023 15:43:44,979 pid: 72220] You're accessing the development server over HTTPS, but it only supports HTTP.
+[INFO 06/May/2023 15:43:44,980 pid: 72220] code 400, message Bad request version ('4qL2\x95\x99P¬\x18Ô\x0e\x9d¹\x19²g\x00bÈdÛJ\x04Ås?K\x00')
+[ERROR 06/May/2023 15:43:44,980 pid: 72220] You're accessing the development server over HTTPS, but it only supports HTTP.
+[INFO 06/May/2023 15:43:44,981 pid: 72220] code 400, message Bad request version ('ÊÊ\x13\x01\x13\x02\x13\x03À+À/À,À0Ì©Ì¨À\x13À\x14\x00\x9c\x00\x9d\x00/\x005\x01\x00\x01\x93ZZ\x00\x00\x00\x17\x00\x00Di\x00\x05\x00\x03\x02h2\x00\x12\x00\x00\x00\x1b\x00\x03\x02\x00\x02ÿ\x01\x00\x01\x00\x00')
+[ERROR 06/May/2023 15:43:44,981 pid: 72220] You're accessing the development server over HTTPS, but it only supports HTTP.
+[INFO 06/May/2023 15:43:49,722 pid: 72220] code 400, message Bad request version ('\x00\x12\x00\x10\x04\x03\x08\x04\x04\x01\x05\x03\x08\x05\x05\x01\x08\x06\x06\x01\x00')
+[ERROR 06/May/2023 15:43:49,722 pid: 72220] You're accessing the development server over HTTPS, but it only supports HTTP.
+[INFO 06/May/2023 15:43:49,724 pid: 72220] code 400, message Bad request version ('jj\x13\x01\x13\x02\x13\x03À+À/À,À0Ì©Ì¨À\x13À\x14\x00\x9c\x00\x9d\x00/\x005\x01\x00\x01\x93ZZ\x00\x00ÿ\x01\x00\x01\x00\x00+\x00\x07\x06jj\x03\x04\x03\x03\x00-\x00\x02\x01\x01\x00')
+[ERROR 06/May/2023 15:43:49,725 pid: 72220] You're accessing the development server over HTTPS, but it only supports HTTP.
+[INFO 06/May/2023 15:43:55,002 pid: 72220] code 400, message Bad request version ('ÊÊ\x13\x01\x13\x02\x13\x03À+À/À,À0Ì©Ì¨À\x13À\x14\x00\x9c\x00\x9d\x00/\x005\x01\x00\x01\x93JJ\x00\x00Di\x00\x05\x00\x03\x02h2\x00\x17\x00\x00\x00')
+[ERROR 06/May/2023 15:43:55,003 pid: 72220] You're accessing the development server over HTTPS, but it only supports HTTP.
+[INFO 06/May/2023 15:43:55,004 pid: 72220] code 400, message Bad request version ('\x02h2\x08http/1.1\x00')
+[ERROR 06/May/2023 15:43:55,005 pid: 72220] You're accessing the development server over HTTPS, but it only supports HTTP.
+[INFO 06/May/2023 15:43:58,204 pid: 72220] code 400, message Bad request version ('\x8b\x04öÐ')
+[ERROR 06/May/2023 15:43:58,204 pid: 72220] You're accessing the development server over HTTPS, but it only supports HTTP.
+[INFO 06/May/2023 15:43:58,205 pid: 72220] code 400, message Bad request version ('47\x0fUÇ\x8caI®6LdµÙ>Öp|l\x84±\x01¹\x97¡ØÙ"â`V*\x00')
+[ERROR 06/May/2023 15:43:58,205 pid: 72220] You're accessing the development server over HTTPS, but it only supports HTTP.
+[INFO 06/May/2023 15:44:15,373 pid: 72220] "GET /api/v1/docs/ HTTP/1.1" 200 2162
+[INFO 06/May/2023 15:44:15,491 pid: 72220] "GET /static/drf-yasg/style.css HTTP/1.1" 200 1047
+[INFO 06/May/2023 15:44:15,492 pid: 72220] "GET /static/drf-yasg/insQ.min.js HTTP/1.1" 200 2093
+[INFO 06/May/2023 15:44:15,493 pid: 72220] "GET /static/drf-yasg/immutable.min.js HTTP/1.1" 200 56904
+[INFO 06/May/2023 15:44:15,495 pid: 72220] "GET /static/drf-yasg/swagger-ui-dist/swagger-ui.css HTTP/1.1" 200 143858
+[INFO 06/May/2023 15:44:15,495 pid: 72220] "GET /static/drf-yasg/swagger-ui-init.js HTTP/1.1" 200 14964
+[INFO 06/May/2023 15:44:15,497 pid: 72220] "GET /static/drf-yasg/swagger-ui-dist/swagger-ui-standalone-preset.js HTTP/1.1" 200 324275
+[INFO 06/May/2023 15:44:15,504 pid: 72220] "GET /static/drf-yasg/swagger-ui-dist/swagger-ui-bundle.js HTTP/1.1" 200 1086481
+[INFO 06/May/2023 15:44:15,573 pid: 72220] "GET /static/drf-yasg/swagger-ui-dist/favicon-32x32.png HTTP/1.1" 200 628
+[INFO 06/May/2023 15:44:15,678 pid: 72220] "GET /api/v1/docs/?format=openapi HTTP/1.1" 200 4997
+[INFO 06/May/2023 15:45:45,347 pid: 72528] code 400, message Bad request syntax ('\x16\x03\x01\x02\x00\x01\x00\x01ü\x03\x03f@=\x8b¯T¶/äç5~röÓ3ë')
+[ERROR 06/May/2023 15:45:45,348 pid: 72528] You're accessing the development server over HTTPS, but it only supports HTTP.
+[INFO 06/May/2023 15:45:45,349 pid: 72528] code 400, message Bad request version ('\x97®+]®°#Èª¼¨&Ã\x8f7Ús\xad|=')
+[ERROR 06/May/2023 15:45:45,350 pid: 72528] You're accessing the development server over HTTPS, but it only supports HTTP.
+[INFO 06/May/2023 15:45:54,699 pid: 72528] "GET /api/v1/docs/ HTTP/1.1" 200 2162
+[INFO 06/May/2023 15:45:55,045 pid: 72528] "GET /api/v1/docs/?format=openapi HTTP/1.1" 200 4997
+[INFO 06/May/2023 15:47:21,652 pid: 72704] code 400, message Bad request version ('\x8aËÛ\x1bó¨Ë\x00')
+[ERROR 06/May/2023 15:47:21,654 pid: 72704] You're accessing the development server over HTTPS, but it only supports HTTP.
+[INFO 06/May/2023 15:47:21,655 pid: 72704] code 400, message Bad request version ('**\x13\x01\x13\x02\x13\x03À+À/À,À0Ì©Ì¨À\x13À\x14\x00\x9c\x00\x9d\x00/\x005\x01\x00\x01\x93\x1a\x1a\x00\x00\x00\x05\x00\x05\x01\x00\x00\x00\x00\x00\x1b\x00\x03\x02\x00\x02ÿ\x01\x00\x01\x00\x00#\x00\x00\x00\x12\x00\x00\x00')
+[ERROR 06/May/2023 15:47:21,655 pid: 72704] You're accessing the development server over HTTPS, but it only supports HTTP.
+[INFO 06/May/2023 15:47:23,345 pid: 72704] "GET /api/v1/docs/ HTTP/1.1" 200 2162
+[INFO 06/May/2023 15:47:23,524 pid: 72704] "GET /api/v1/docs/?format=openapi HTTP/1.1" 200 4997
+[INFO 06/May/2023 15:47:37,306 pid: 72704] code 400, message Bad request version ('ªª\x13\x01\x13\x02\x13\x03À+À/À,À0Ì©Ì¨À\x13À\x14\x00\x9c\x00\x9d\x00/\x005\x01\x00\x01\x93\x8a\x8a\x00\x00\x00')
+[ERROR 06/May/2023 15:47:37,307 pid: 72704] You're accessing the development server over HTTPS, but it only supports HTTP.
+[INFO 06/May/2023 15:47:37,310 pid: 72704] code 400, message Bad request version ('ìp\x16\x9e°µoõªç¶§"ÀÝÙÓÿacµ§è²\x99MMRb¤\x8d')
+[ERROR 06/May/2023 15:47:37,310 pid: 72704] You're accessing the development server over HTTPS, but it only supports HTTP.
+[INFO 06/May/2023 15:47:37,317 pid: 72704] code 400, message Bad request version ('\x00\x02\x01\x00\x00+\x00\x07\x06**\x03\x04\x03\x03\x00')
+[ERROR 06/May/2023 15:47:37,318 pid: 72704] You're accessing the development server over HTTPS, but it only supports HTTP.
+[INFO 06/May/2023 15:47:37,322 pid: 72704] code 400, message Bad request version ('\x8fÇ\x98Ê¼D,\x15æÍÓº')
+[ERROR 06/May/2023 15:47:37,322 pid: 72704] You're accessing the development server over HTTPS, but it only supports HTTP.
+[INFO 06/May/2023 15:47:41,711 pid: 72704] code 400, message Bad request version ('\x00\x12\x00\x10\x04\x03\x08\x04\x04\x01\x05\x03\x08\x05\x05\x01\x08\x06\x06\x01Di\x00\x05\x00\x03\x02h2ÿ\x01\x00\x01\x00\x00+\x00\x07\x06JJ\x03\x04\x03\x03\x00\x1b\x00\x03\x02\x00\x02\x00')
+[ERROR 06/May/2023 15:47:41,713 pid: 72704] You're accessing the development server over HTTPS, but it only supports HTTP.
+[INFO 06/May/2023 15:47:41,714 pid: 72704] code 400, message Bad request syntax ('\x16\x03\x01\x02\x00\x01\x00\x01ü\x03\x03\x92f$Ðo\x91Õ\x82Ñ\x08\x9eLðf\x84C«\x96$Px')
+[ERROR 06/May/2023 15:47:41,715 pid: 72704] You're accessing the development server over HTTPS, but it only supports HTTP.
+[INFO 06/May/2023 15:47:51,254 pid: 72704] "GET /api/v1/docs/ HTTP/1.1" 200 2162
+[INFO 06/May/2023 15:47:51,442 pid: 72704] "GET /api/v1/docs/?format=openapi HTTP/1.1" 200 4997
+[INFO 06/May/2023 15:50:07,129 pid: 72994] code 400, message Bad request version ('\x00\x12\x00\x10\x04\x03\x08\x04\x04\x01\x05\x03\x08\x05\x05\x01\x08\x06\x06\x01Di\x00\x05\x00\x03\x02h2\x00#\x00\x00\x003\x00+\x00)')
+[ERROR 06/May/2023 15:50:07,131 pid: 72994] You're accessing the development server over HTTPS, but it only supports HTTP.
+[INFO 06/May/2023 15:50:07,132 pid: 72994] code 400, message Bad request version ('õÉë¼Ë\xadÔ\x90\x93\x15,5ôÁ\x19{\x9f')
+[ERROR 06/May/2023 15:50:07,132 pid: 72994] You're accessing the development server over HTTPS, but it only supports HTTP.
+[INFO 06/May/2023 15:50:08,096 pid: 72994] code 400, message Bad request version ('::\x13\x01\x13\x02\x13\x03À+À/À,À0Ì©Ì¨À\x13À\x14\x00\x9c\x00\x9d\x00/\x005\x01\x00\x01\x93')
+[ERROR 06/May/2023 15:50:08,096 pid: 72994] You're accessing the development server over HTTPS, but it only supports HTTP.
+[INFO 06/May/2023 15:50:08,097 pid: 72994] code 400, message Bad request version ('ª\x92¬')
+[ERROR 06/May/2023 15:50:08,098 pid: 72994] You're accessing the development server over HTTPS, but it only supports HTTP.
+[INFO 06/May/2023 15:50:14,055 pid: 72994] code 400, message Bad request version ('±=Î')
+[ERROR 06/May/2023 15:50:14,056 pid: 72994] You're accessing the development server over HTTPS, but it only supports HTTP.
+[INFO 06/May/2023 15:50:14,057 pid: 72994] code 400, message Bad request version ('\x00\x02\x01\x00\x00')
+[ERROR 06/May/2023 15:50:14,058 pid: 72994] You're accessing the development server over HTTPS, but it only supports HTTP.
+[INFO 06/May/2023 15:50:20,299 pid: 72994] "GET /api/v1/docs/ HTTP/1.1" 200 2162
+[INFO 06/May/2023 15:50:20,453 pid: 72994] "GET /api/v1/docs/?format=openapi HTTP/1.1" 200 4997
+[INFO 06/May/2023 15:50:29,024 pid: 72994] "GET /api/v1/cafe/ HTTP/1.1" 200 4105
+[INFO 06/May/2023 15:51:22,181 pid: 73203] "GET /api/v1/docs/ HTTP/1.1" 200 2162
+[INFO 06/May/2023 15:51:22,376 pid: 73203] "GET /api/v1/docs/?format=openapi HTTP/1.1" 200 4997
+[INFO 06/May/2023 15:51:25,392 pid: 73203] "GET /api/v1/cafe/ HTTP/1.1" 200 4105
