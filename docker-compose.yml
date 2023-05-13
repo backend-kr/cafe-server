@@ -8,7 +8,5 @@ services:
     environment:
       - RUNNING_ENV=local
       - TZ=Asia/Seoul
-    volumes:
-    - ./:/webapp/server/
     ports:
       - "172.22.0.1:8001:80"
