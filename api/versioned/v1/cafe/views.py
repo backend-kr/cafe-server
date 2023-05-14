@@ -9,6 +9,8 @@ import math
 import json
 import redis
 
+r = redis.Redis(host='redis', port=6379, db=0, decode_responses=True)
+
 def haversine(lat1, lon1, lat2, lon2):
     R = 6371  # 지구의 반지름 (킬로미터)
 
@@ -37,6 +39,8 @@ class CafeNearbyViewSet(MappingViewSetMixin, viewsets.GenericViewSet):
     queryset = Cafe.objects.all()
     serializer_class = PointSerializer
 
+
+
     def nearby_cafes(self, request, *args, **kwargs):
         latitude = request.data.get('latitude')
         longitude = request.data.get('longitude')
@@ -49,7 +53,6 @@ class CafeNearbyViewSet(MappingViewSetMixin, viewsets.GenericViewSet):
 
         user_location = (latitude_rounded, longitude_rounded)
 
-        r = redis.Redis(host='localhost', port=6379, db=0, password='changeme', decode_responses=True)
         nearby_cafes_json = r.get(f'cafes_near_{user_location}')
 
         if nearby_cafes_json is None:
