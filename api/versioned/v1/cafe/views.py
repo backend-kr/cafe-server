@@ -6,6 +6,8 @@ from common.viewsets import MappingViewSetMixin
 from rest_framework import viewsets
 from rest_framework import status
 import math
+import json
+import redis
 
 def haversine(lat1, lon1, lat2, lon2):
     R = 6371  # 지구의 반지름 (킬로미터)
@@ -30,10 +32,7 @@ class CafeViewSet(MappingViewSetMixin,
     serializer_class = CafeSerializer
 
 
-
-class CafeNearbyViewSet(MappingViewSetMixin,
-                     viewsets.GenericViewSet):
-
+class CafeNearbyViewSet(MappingViewSetMixin, viewsets.GenericViewSet):
     permission_classes = [AllowAny, ]
     queryset = Cafe.objects.all()
     serializer_class = PointSerializer
@@ -45,22 +44,45 @@ class CafeNearbyViewSet(MappingViewSetMixin,
         if latitude is None or longitude is None:
             return Response({"error": "위도와 경도를 입력해주세요."}, status=status.HTTP_400_BAD_REQUEST)
 
-        user_location = (float(latitude), float(longitude))
-        queryset = list(Cafe.objects.all())
-        nearby_cafes = []
+        latitude_rounded = round(float(latitude), 5)
+        longitude_rounded = round(float(longitude), 5)
 
-        for cafe in queryset:
-            cafe.distance = haversine(user_location[0], user_location[1], float(cafe.latitude), float(cafe.longitude))
+        user_location = (latitude_rounded, longitude_rounded)
 
-            if cafe.distance <= 1:  # 5km 이내인 경우에만 추가
-                nearby_cafes.append(cafe)
+        r = redis.Redis(host='localhost', port=6379, db=0, password='changeme', decode_responses=True)
+        nearby_cafes_json = r.get(f'cafes_near_{user_location}')
 
-        nearby_cafes.sort(key=lambda cafe: cafe.distance)
+        if nearby_cafes_json is None:
+            queryset = list(Cafe.objects.all())
+            nearby_cafes = []
 
-        serializer = CafeSerializer(nearby_cafes, many=True)
-        serialized_data = serializer.data
+            for cafe in queryset:
+                cafe.distance = haversine(user_location[0], user_location[1], float(cafe.latitude), float(cafe.longitude))
+
+                if cafe.distance <= 1:
+                    serializer = CafeSerializer(cafe)
+                    serialized_cafe = serializer.data
+                    serialized_cafe['distance'] = cafe.distance
+                    nearby_cafes.append(serialized_cafe)
+
+            nearby_cafes.sort(key=lambda cafe: cafe['distance'])
+            nearby_cafes_json = json.dumps(nearby_cafes)
+            r.set(f'cafes_near_{user_location}', nearby_cafes_json)
+        else:
+            nearby_cafes = json.loads(nearby_cafes_json)
 
         for i, cafe in enumerate(nearby_cafes):
-            serialized_data[i]['distance'] = round(cafe.distance * 1000, 3) # 킬로미터를 미터로 변환
+            cafe['distance'] = round(cafe['distance'] * 1000, 3)  # 킬로미터를 미터로 변환
 
-        return Response(serializer.data, status=status.HTTP_200_OK)
+        return Response(nearby_cafes, status=status.HTTP_200_OK)
+
+
+class CafeSearchViewSet(MappingViewSetMixin,
+                     viewsets.GenericViewSet):
+
+    permission_classes = [AllowAny, ]
+    queryset = Cafe.objects.all()
+    serializer_class = PointSerializer
+
+    def searh_cafes(self, request, *args, **kwargs):
+        return Response(status=status.HTTP_200_OK)

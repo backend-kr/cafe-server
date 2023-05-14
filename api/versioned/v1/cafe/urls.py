@@ -7,5 +7,6 @@ router.register(r'', CafeViewSet)
 
 urlpatterns = [
     path('nearby/', CafeNearbyViewSet.as_view({'post': 'nearby_cafes'})),
+    path('search/', CafeNearbyViewSet.as_view({'post': 'nearby_cafes'})),
 ]
 urlpatterns += router.urls
