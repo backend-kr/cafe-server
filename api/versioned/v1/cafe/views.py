@@ -40,8 +40,6 @@ class CafeNearbyViewSet(MappingViewSetMixin, viewsets.GenericViewSet):
     queryset = Cafe.objects.all()
     serializer_class = PointSerializer
 
-
-
     def nearby_cafes(self, request, *args, **kwargs):
         latitude = request.data.get('latitude')
         longitude = request.data.get('longitude')

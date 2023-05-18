@@ -2,19 +2,15 @@ version: "3"
 
 services:
   django:
-    build:
-      context: .
-      dockerfile: Dockerfile
+    image: 221.155.148.197:5000/cafe_server-django:latest
     container_name: cafe-moa
     networks:
       - internal_network
     environment:
       - RUNNING_ENV=local
       - TZ=Asia/Seoul
-    volumes:
-      - ./:/webapp/server/
     ports:
-      - "8001:80"
+      - "172.22.0.1:8001:80"
 
   redis:
     image: redis:latest
