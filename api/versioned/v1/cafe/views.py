@@ -31,6 +31,7 @@ class CafeViewSet(MappingViewSetMixin,
 
     permission_classes = [AllowAny, ]
     queryset = Cafe.objects.all()
+    lookup_field = 'title'
     serializer_class = CafeSerializer
 
 
