@@ -57,6 +57,8 @@ $ docker build -t cafe_manager .
 # M1 아키텍쳐
 $ docker build -t cafe_manager --platform=linux/amd64 .
 
+# docker-compose local 실행
+$ docker-compose -f docker-compose-local.yml up -d
 ```
 
 빌드가 정상적으로 끝났을때, 빌드된 Docker 이미지를 기반으로 컨테이너를 생성합니다.

@@ -7,9 +7,9 @@ from rest_framework import viewsets
 from rest_framework import status
 import math
 import json
-import redis
+from django.core.cache import caches
 
-r = redis.Redis(host='redis', port=6379, db=0, decode_responses=True)
+
 
 def haversine(lat1, lon1, lat2, lon2):
     R = 6371  # 지구의 반지름 (킬로미터)
@@ -47,12 +47,12 @@ class CafeNearbyViewSet(MappingViewSetMixin, viewsets.GenericViewSet):
         if latitude is None or longitude is None:
             return Response({"error": "위도와 경도를 입력해주세요."}, status=status.HTTP_400_BAD_REQUEST)
 
-        latitude_rounded = round(float(latitude), 5)
-        longitude_rounded = round(float(longitude), 5)
+        latitude_rounded = round(float(latitude), 4)
+        longitude_rounded = round(float(longitude), 4)
 
         user_location = (latitude_rounded, longitude_rounded)
-
-        nearby_cafes_json = r.get(f'cafes_near_{user_location}')
+        # 위도 경도를 하나의 그룹으로 캐싱
+        nearby_cafes_json = caches['replica'].get(f'cafes_near_{user_location}')
 
         if nearby_cafes_json is None:
             queryset = list(Cafe.objects.all())
@@ -69,7 +69,7 @@ class CafeNearbyViewSet(MappingViewSetMixin, viewsets.GenericViewSet):
 
             nearby_cafes.sort(key=lambda cafe: cafe['distance'])
             nearby_cafes_json = json.dumps(nearby_cafes)
-            r.set(f'cafes_near_{user_location}', nearby_cafes_json)
+            caches['default'].set(f'cafes_near_{user_location}', nearby_cafes_json)
         else:
             nearby_cafes = json.loads(nearby_cafes_json)
 
