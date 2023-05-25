@@ -297,16 +297,17 @@ DATABASE_ROUTERS = ("common.db_routers.MasterSlaveRouter",)
 CACHES = {
     "default": {
         "BACKEND": "django_redis.cache.RedisCache",
-        "LOCATION": "redis://redis-master:6379/0",
+        "LOCATION": "redis://127.0.0.1:6379/0",
         "OPTIONS": {
             "CLIENT_CLASS": "django_redis.client.DefaultClient",
         }
     },
     "replica": {
         "BACKEND": "django_redis.cache.RedisCache",
-        "LOCATION": "redis://redis-slave:6379/1",
+        "LOCATION": "redis://127.0.0.1:6380/1",
         "OPTIONS": {
             "CLIENT_CLASS": "django_redis.client.DefaultClient",
         }
     }
 }
+
