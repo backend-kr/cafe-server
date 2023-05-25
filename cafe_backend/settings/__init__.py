@@ -3,7 +3,7 @@ import pymysql
 
 pymysql.install_as_MySQLdb()
 
-ENV_TYPE = os.getenv('RUNNING_ENV', 'local')
+ENV_TYPE = os.getenv('RUNNING_ENV', 'base')
 
 try:
     exec('from .{} import *'.format(ENV_TYPE))
