@@ -51,10 +51,9 @@ def get_secret(setting, secrets=secrets):
 
 
 SECRET_KEY = get_secret('SECRET_KEY')
-SITE_ID = 1
 # SECURITY WARNING: don't run with debug turned on in production!
-# DEBUG = False
 DEBUG = True
+
 
 ALLOWED_HOSTS = ['*']
 

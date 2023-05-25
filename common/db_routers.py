@@ -4,8 +4,10 @@ logger = logging.getLogger(__name__)
 
 class MasterSlaveRouter:
     def db_for_read(self, model, **hints):
-        logger.info(f"Read operation for model {model.__name__} is routed to 'slave' database")
-        return 'slave'
+        if model._meta.app_label == 'admin':
+            logger.info(f"Read operation for model {model.__name__} is routed to 'slave' database")
+            return 'slave'
+        return 'default'
 
     def db_for_write(self, model, **hints):
         logger.info(f"Write operation for model {model.__name__} is routed to 'default' database")
