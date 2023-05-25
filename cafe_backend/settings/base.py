@@ -53,7 +53,8 @@ def get_secret(setting, secrets=secrets):
 SECRET_KEY = get_secret('SECRET_KEY')
 SITE_ID = 1
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = False
+# DEBUG = False
+DEBUG = True
 
 ALLOWED_HOSTS = ['*']
 
@@ -117,7 +118,7 @@ CORS_ALLOWED_ORIGINS = ["http://localhost:3000",
 
 # Database
 # https://docs.djangoproject.com/en/4.1/ref/settings/#databases
-
+DATABASES = get_secret('DATABASES')
 
 # Password validation
 # https://docs.djangoproject.com/en/4.1/ref/settings/#auth-password-validators
@@ -297,14 +298,14 @@ DATABASE_ROUTERS = ("common.db_routers.MasterSlaveRouter",)
 CACHES = {
     "default": {
         "BACKEND": "django_redis.cache.RedisCache",
-        "LOCATION": "redis://redis-master:6379/0",
+        "LOCATION": "redis://127.0.0.1:6379/0",
         "OPTIONS": {
             "CLIENT_CLASS": "django_redis.client.DefaultClient",
         }
     },
     "replica": {
         "BACKEND": "django_redis.cache.RedisCache",
-        "LOCATION": "redis://redis-slave:6379/1",
+        "LOCATION": "redis://127.0.0.1:6380/1",
         "OPTIONS": {
             "CLIENT_CLASS": "django_redis.client.DefaultClient",
         }

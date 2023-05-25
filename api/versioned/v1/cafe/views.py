@@ -1,15 +1,14 @@
 from rest_framework.permissions import AllowAny
 from rest_framework.response import Response
 from api.bases.cafe.models import Cafe
-from api.versioned.v1.cafe.serializers import CafeSerializer, PointSerializer
+from api.versioned.v1.cafe.serializers import CafeSerializer, PointSerializer, MenuSerializer
 from common.viewsets import MappingViewSetMixin
 from rest_framework import viewsets
 from rest_framework import status
 import math
 import json
 from django.core.cache import caches
-
-
+from django.shortcuts import get_object_or_404
 
 def haversine(lat1, lon1, lat2, lon2):
     R = 6371  # 지구의 반지름 (킬로미터)
@@ -34,6 +33,17 @@ class CafeViewSet(MappingViewSetMixin,
     lookup_field = 'title'
     serializer_class = CafeSerializer
 
+    def retrieve(self, request, *args, **kwargs):
+        filter_kwargs = {self.lookup_field: self.kwargs[self.lookup_field]}
+        cafe = get_object_or_404(self.get_queryset(), **filter_kwargs)
+        menu_serializer = MenuSerializer(cafe.menu_set.all(), many=True)
+        serializer = self.get_serializer(cafe)
+
+        # menu를 처리하기 위해 copy 처리함
+        data = serializer.data.copy()
+        data['menu'] = menu_serializer.data
+
+        return Response(data, status=status.HTTP_200_OK)
 
 class CafeNearbyViewSet(MappingViewSetMixin, viewsets.GenericViewSet):
     permission_classes = [AllowAny, ]

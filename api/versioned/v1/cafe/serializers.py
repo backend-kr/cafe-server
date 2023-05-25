@@ -12,13 +12,12 @@ class ThumbnailSerializer(serializers.ModelSerializer):
 class MenuSerializer(serializers.ModelSerializer):
     class Meta:
         model = Menu
-        fields = '__all__'
+        fields = ('name', 'price', )
 
 
 class PointSerializer(serializers.Serializer):
     latitude = serializers.FloatField(help_text="위도")
     longitude = serializers.FloatField(help_text="경도")
-
 
 
 class CafeSerializer(serializers.ModelSerializer):
