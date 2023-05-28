@@ -47,7 +47,7 @@ class CafeViewSet(MappingViewSetMixin,
                     cafe_detail = cafe_detail_serializer.data
 
                     # Call API if the serializer data is empty
-                    if not cafe_detail['options'] and not cafe_detail['menu_images']:
+                    if not cafe_detail['options'] and not cafe_detail['menu_images'] and not cafe_detail['categories']:
                         raise ValueError("Empty data in CafeDetailSerializer")
 
                 # DB에도 데이터가 없다면 API 호출
@@ -78,6 +78,7 @@ class CafeViewSet(MappingViewSetMixin,
         data['description'] = cafe_detail['description']
         data['options'] = cafe_detail['options']
         data['menu_images'] = cafe_detail['menu_images']
+        data['categories'] = cafe_detail['categories']
 
         return Response(data, status=status.HTTP_200_OK)
 

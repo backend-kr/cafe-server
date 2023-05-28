@@ -1,6 +1,7 @@
 from rest_framework import serializers
 import datetime
-from api.bases.cafe.models import Cafe, Thumbnail, Menu, MenuImage, Option
+from api.bases.cafe.models import Cafe, Thumbnail, Menu, MenuImage, Option, CafeCategory
+
 
 class ThumbnailSerializer(serializers.ModelSerializer):
     class Meta:
@@ -33,28 +34,50 @@ class MenuImageSerializer(serializers.ModelSerializer):
         fields = ['image_url']
 
 
-class CafeDetailSerializer(serializers.Serializer):
-    description = serializers.CharField()
+class MenuImageSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = MenuImage
+        fields = ['image_url']
+
+
+class CustomSlugRelatedField(serializers.SlugRelatedField):
+    def to_internal_value(self, data):
+        try:
+            return self.get_queryset().get(**{self.slug_field: data})
+        except self.get_queryset().model.DoesNotExist:
+            return self.get_queryset().create(**{self.slug_field: data})
+
+
+class CafeDetailSerializer(serializers.ModelSerializer):
+    description = serializers.CharField(allow_blank=True)
+    categories = CustomSlugRelatedField(slug_field='name', queryset=CafeCategory.objects.all(), many=True)
     options = OptionSerializer(many=True)
     menu_images = MenuImageSerializer(many=True)
 
     class Meta:
-        fields = ['description', 'options', 'menu_images']
-
+        model = Cafe
+        fields = ['description', 'options', 'menu_images', 'categories']
 
     def create(self, validated_data):
         options_data = validated_data.pop('options')
         menu_images_data = validated_data.pop('menu_images')
+        categories_data = validated_data.pop('categories')
+
+        cafe = self.context['cafe']
+        cafe.description = validated_data.get('description')
+        cafe.save()
 
         for option_data in options_data:
-            Option.objects.create(cafe=self.context['cafe'], **option_data)
+            Option.objects.create(cafe=cafe, **option_data)
 
         for menu_image_data in menu_images_data:
-            MenuImage.objects.create(cafe=self.context['cafe'], **menu_image_data)
+            MenuImage.objects.create(cafe=cafe, **menu_image_data)
 
-        return validated_data
+        for category_name in categories_data:
+            category, created = CafeCategory.objects.get_or_create(name=category_name)
+            cafe.categories.add(category)
 
-
+        return cafe
 
 
 class CafeSerializer(serializers.ModelSerializer):
