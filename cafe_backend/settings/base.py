@@ -73,6 +73,7 @@ INSTALLED_APPS = [
     'rest_framework_simplejwt',
     'encrypted_model_fields',
     'drf_yasg',
+    'django_redis',
     'elasticapm.contrib.django',
     'api.bases.cafe'
 ]
@@ -119,6 +120,7 @@ CORS_ALLOWED_ORIGINS = ["http://localhost:3000",
 # https://docs.djangoproject.com/en/4.1/ref/settings/#databases
 DATABASES = get_secret('DATABASES')
 
+TR_BACKEND = get_secret("TR_BACKEND")
 # Password validation
 # https://docs.djangoproject.com/en/4.1/ref/settings/#auth-password-validators
 

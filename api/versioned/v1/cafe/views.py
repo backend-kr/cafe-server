@@ -1,7 +1,7 @@
 from rest_framework.permissions import AllowAny
 from rest_framework.response import Response
 from api.bases.cafe.models import Cafe
-from api.versioned.v1.cafe.serializers import CafeSerializer, PointSerializer, MenuSerializer
+from api.versioned.v1.cafe.serializers import CafeSerializer, PointSerializer, MenuSerializer, CafeDetailSerializer
 from common.viewsets import MappingViewSetMixin
 from rest_framework import viewsets
 from rest_framework import status
@@ -9,6 +9,8 @@ import math
 import json
 from django.core.cache import caches
 from django.shortcuts import get_object_or_404
+import requests
+from django.conf import settings
 
 def haversine(lat1, lon1, lat2, lon2):
     R = 6371  # 지구의 반지름 (킬로미터)
@@ -34,14 +36,48 @@ class CafeViewSet(MappingViewSetMixin,
     serializer_class = CafeSerializer
 
     def retrieve(self, request, *args, **kwargs):
+        def retrieve_cafe_detail(cafe):
+            cafe_detail = caches['replica'].get(f'cafes_detail_{cafe.cafe_id}')
+
+            # Redis 캐시에 데이터가 없다면 DB에서 조회
+            if cafe_detail is None:
+                try:
+                    cafe = Cafe.objects.get(cafe_id=cafe.cafe_id)
+                    cafe_detail_serializer = CafeDetailSerializer(cafe)
+                    cafe_detail = cafe_detail_serializer.data
+
+                    # Call API if the serializer data is empty
+                    if not cafe_detail['options'] and not cafe_detail['menu_images']:
+                        raise ValueError("Empty data in CafeDetailSerializer")
+
+                # DB에도 데이터가 없다면 API 호출
+                except ValueError:
+                    payload = {'cafe_id': cafe.cafe_id}
+                    response = requests.post(f'{settings.TR_BACKEND}/api/v1/cafe/naver/cafe-detail', params=payload)
+                    cafe_detail = response.json()
+
+                    cafe_detail_serializer = CafeDetailSerializer(data=cafe_detail, context={'cafe': cafe})
+                    if cafe_detail_serializer.is_valid(raise_exception=True):
+                        cafe_detail_serializer.save()
+
+                # Redis 캐시에 데이터 저장
+                caches['default'].set(f'cafes_detail_{cafe.cafe_id}', cafe_detail)
+
+            return cafe_detail
+
         filter_kwargs = {self.lookup_field: self.kwargs[self.lookup_field]}
         cafe = get_object_or_404(self.get_queryset(), **filter_kwargs)
         menu_serializer = MenuSerializer(cafe.menu_set.all(), many=True)
         serializer = self.get_serializer(cafe)
 
-        # menu를 처리하기 위해 copy 처리함
         data = serializer.data.copy()
         data['menu'] = menu_serializer.data
+
+        cafe_detail = retrieve_cafe_detail(cafe)
+
+        data['description'] = cafe_detail['description']
+        data['options'] = cafe_detail['options']
+        data['menu_images'] = cafe_detail['menu_images']
 
         return Response(data, status=status.HTTP_200_OK)
 
@@ -62,6 +98,7 @@ class CafeNearbyViewSet(MappingViewSetMixin, viewsets.GenericViewSet):
 
         user_location = (latitude_rounded, longitude_rounded)
         # 위도 경도를 하나의 그룹으로 캐싱
+        # 37.6344, 126.9188
         nearby_cafes_json = caches['replica'].get(f'cafes_near_{user_location}')
 
         if nearby_cafes_json is None:

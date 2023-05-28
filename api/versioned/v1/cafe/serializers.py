@@ -1,7 +1,6 @@
 from rest_framework import serializers
 import datetime
-from api.bases.cafe.models import Cafe, Thumbnail, Menu
-
+from api.bases.cafe.models import Cafe, Thumbnail, Menu, MenuImage, Option
 
 class ThumbnailSerializer(serializers.ModelSerializer):
     class Meta:
@@ -20,18 +19,57 @@ class PointSerializer(serializers.Serializer):
     longitude = serializers.FloatField(help_text="경도")
 
 
+
+class OptionSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Option
+        fields = ['option_id', 'option_name']
+
+
+
+class MenuImageSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = MenuImage
+        fields = ['image_url']
+
+
+class CafeDetailSerializer(serializers.Serializer):
+    description = serializers.CharField()
+    options = OptionSerializer(many=True)
+    menu_images = MenuImageSerializer(many=True)
+
+    class Meta:
+        fields = ['description', 'options', 'menu_images']
+
+
+    def create(self, validated_data):
+        options_data = validated_data.pop('options')
+        menu_images_data = validated_data.pop('menu_images')
+
+        for option_data in options_data:
+            Option.objects.create(cafe=self.context['cafe'], **option_data)
+
+        for menu_image_data in menu_images_data:
+            MenuImage.objects.create(cafe=self.context['cafe'], **menu_image_data)
+
+        return validated_data
+
+
+
+
 class CafeSerializer(serializers.ModelSerializer):
     menu_info = serializers.CharField(write_only=True)
     thumUrls = serializers.ListField(child=serializers.URLField(), write_only=True)
     business_hours = serializers.CharField(write_only=True, required=False)
     thumbnails = ThumbnailSerializer(many=True, read_only=True)
 
+
     class Meta:
         model = Cafe
         fields = (
             'menu_info', 'thumUrls', 'cafe_id', 'title', 'address', 'road_address',
             'latitude', 'longitude', 'tel', 'home_page', 'business_hours', 'business_hours_start', 'business_hours_end',
-            'thumbnails',
+            'thumbnails', 'description',
         )
 
 
