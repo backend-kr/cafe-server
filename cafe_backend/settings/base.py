@@ -174,7 +174,7 @@ ELASTIC_APM = {
     "SERVICE_NAME": "cafe_manager",
     "DEBUG": True,
     "CAPTURE_BODY": "transactions",
-    'SERVER_URL': 'http://172.30.1.1:8200',
+    'SERVER_URL': 'http://221.155.148.197:8200',
 }
 
 # Static files (CSS, JavaScript, Images)
