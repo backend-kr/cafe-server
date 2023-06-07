@@ -1,4 +1,4 @@
-from .models import Cafe,Thumbnail,CafeCategory,MenuImage
+from .models import Cafe
 
 class BaseRepository:
     model = None
@@ -23,13 +23,17 @@ class BaseRepository:
         item.save()
         return item
 
+
     def delete(self, id):
         item = self.model.objects.get(id=id)
         item.delete()
 
 
+    def filter(self, **kwargs):
+        items = self.model.objects.filter(**kwargs)
+        return items
+
 class CafeRepository(BaseRepository):
     model = Cafe
 
-class ThumbnailModelRepository(BaseRepository):
-    model = Thumbnail
+

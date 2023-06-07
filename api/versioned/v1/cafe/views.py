@@ -1,6 +1,7 @@
 from rest_framework.permissions import AllowAny
 from rest_framework.response import Response
 from api.bases.cafe.models import Cafe
+from api.bases.cafe.repositories import CafeRepository
 from api.versioned.v1.cafe.serializers import CafeSerializer, PointSerializer, MenuSerializer, CafeDetailSerializer
 from common.viewsets import MappingViewSetMixin
 from rest_framework import viewsets
@@ -135,4 +136,9 @@ class CafeSearchViewSet(MappingViewSetMixin,
     serializer_class = PointSerializer
 
     def searh_cafes(self, request, *args, **kwargs):
+        """
+        instance = CafeRepository()
+        instance.get(request['id'])
+        instance.list()
+        """
         return Response(status=status.HTTP_200_OK)
