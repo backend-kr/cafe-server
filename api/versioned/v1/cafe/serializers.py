@@ -178,8 +178,12 @@ class CafeCreateSerializer(serializers.ModelSerializer):
             title=validated_data.get('title'),
             defaults=validated_data
         )
+        self._process_menus(cafe, menu_info)
+        self._process_thumbnails(cafe, thum_urls)
+        return cafe
 
-        # Menu 모델 인스턴스를 찾아서 해당 인스턴스를 업데이트합니다.
+
+    def _process_menus(self, cafe, menu_info):
         menus = cafe.menu_set.all()
         existing_menu_names = [menu.name for menu in menus]
         incoming_menu_infos = menu_info.split(' | ')
@@ -208,10 +212,8 @@ class CafeCreateSerializer(serializers.ModelSerializer):
             else:
                 Menu.objects.create(cafe_id=cafe, name=name, price=price)
 
-        # Thumbnail 모델 인스턴스를 생성하거나 업데이트합니다.
+    def _process_thumbnails(self, cafe, thum_urls):
         existing_thumbnail_urls = [thumbnail.url for thumbnail in cafe.thumbnails.all()]
         for url in thum_urls:
             if url not in existing_thumbnail_urls:
                 Thumbnail.objects.create(cafe_id=cafe, url=url)
-
-        return cafe
