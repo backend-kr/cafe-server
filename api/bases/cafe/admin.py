@@ -29,7 +29,7 @@ class CafeAdmin(admin.ModelAdmin):
     list_display = ('title', 'address', 'road_address', 'tel',
                        'home_page', 'business_hours_start', 'business_hours_end')
 
-    readonly_fields = ['id', 'cafe_id', 'latitude', 'longitude', 'title', 'address', 'road_address', 'tel',
+    readonly_fields = ['cafe_id', 'latitude', 'longitude', 'title', 'address', 'road_address', 'tel',
                        'home_page', 'business_hours_start', 'business_hours_end']
 
     inlines = [MenuTabularInline, ThumbnailTabularInline]

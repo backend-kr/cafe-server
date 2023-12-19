@@ -10,8 +10,7 @@ class CafeCategory(models.Model):
 
 
 class Cafe(Timestampable, models.Model):
-    id = models.BigAutoField(primary_key=True)
-    cafe_id = models.CharField(max_length=255)
+    cafe_id = models.CharField(max_length=255, primary_key=True)
     title = models.CharField(max_length=255)
     address = models.CharField(max_length=255, blank=True, null=True)
     road_address = models.CharField(max_length=255, blank=True, null=True)
@@ -29,26 +28,26 @@ class Cafe(Timestampable, models.Model):
 
 
 class Menu(models.Model):
-    cafe = models.ForeignKey(Cafe, on_delete=models.CASCADE)
+    cafe_id = models.ForeignKey(Cafe, on_delete=models.CASCADE)
     name = models.CharField(max_length=255)
     price = models.IntegerField()
 
 
 class Thumbnail(models.Model):
-    cafe = models.ForeignKey(Cafe, related_name='thumbnails', on_delete=models.CASCADE)
+    cafe_id = models.ForeignKey(Cafe, related_name='thumbnails', on_delete=models.CASCADE)
     url = models.URLField(max_length=255)
 
 
 
 class Option(models.Model):
-    cafe = models.ForeignKey(Cafe, on_delete=models.CASCADE, related_name='options')
+    cafe_id = models.ForeignKey(Cafe, on_delete=models.CASCADE, related_name='options')
     option_id = models.CharField(max_length=255)
     option_name = models.CharField(max_length=255)
 
 
 
 class MenuImage(models.Model):
-    cafe = models.ForeignKey(Cafe, on_delete=models.CASCADE, related_name='menu_images')
+    cafe_id = models.ForeignKey(Cafe, on_delete=models.CASCADE, related_name='menu_images')
     image_url = models.URLField(max_length=255)
 
 

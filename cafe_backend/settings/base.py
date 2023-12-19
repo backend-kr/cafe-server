@@ -170,12 +170,12 @@ USE_I18N = True
 
 USE_TZ = True
 
-ELASTIC_APM = {
-    "SERVICE_NAME": "cafe_manager",
-    "DEBUG": True,
-    "CAPTURE_BODY": "transactions",
-    'SERVER_URL': 'http://221.155.148.197:8200',
-}
+# ELASTIC_APM = {
+#     "SERVICE_NAME": "cafe_manager",
+#     "DEBUG": True,
+#     "CAPTURE_BODY": "transactions",
+#     'SERVER_URL': 'http://221.155.148.197:8200',
+# }
 
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/4.1/howto/static-files/
@@ -294,19 +294,20 @@ SWAGGER_SETTINGS = {
 }
 
 APPEND_SLASH = True
-DATABASE_ROUTERS = ("common.db_routers.MasterSlaveRouter",)
+# DATABASE_ROUTERS = ("common.db_routers.MasterSlaveRouter",)
 
 CACHES = {
     "default": {
         "BACKEND": "django_redis.cache.RedisCache",
-        "LOCATION": "redis://127.0.0.1:6379/0",
+        "LOCATION": "redis://10.10.162.33:6379/0",
         "OPTIONS": {
             "CLIENT_CLASS": "django_redis.client.DefaultClient",
+            "PASSWORD": "changeme",
         }
     },
     "replica": {
         "BACKEND": "django_redis.cache.RedisCache",
-        "LOCATION": "redis://127.0.0.1:6380/1",
+        "LOCATION": "redis://10.10.162.33:6380/1",
         "OPTIONS": {
             "CLIENT_CLASS": "django_redis.client.DefaultClient",
         }

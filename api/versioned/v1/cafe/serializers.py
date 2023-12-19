@@ -82,7 +82,7 @@ class CafeDetailSerializer(serializers.ModelSerializer):
 
 class CafeSerializer(serializers.ModelSerializer):
     menu_info = serializers.CharField(write_only=True)
-    thumUrls = serializers.ListField(child=serializers.URLField(), write_only=True)
+    thumUrls = serializers.ListField(child=serializers.URLField(), write_only=True, allow_empty=True, allow_null=True)
     business_hours = serializers.CharField(write_only=True, required=False)
     thumbnails = ThumbnailSerializer(many=True, read_only=True)
 
@@ -168,13 +168,13 @@ class CafeSerializer(serializers.ModelSerializer):
                     menu.price = price
                     menu.save()
             else:
-                Menu.objects.create(cafe=cafe, name=name, price=price)
+                Menu.objects.create(cafe_id=cafe, name=name, price=price)
 
         # Thumbnail 모델 인스턴스를 생성하거나 업데이트합니다.
         existing_thumbnail_urls = [thumbnail.url for thumbnail in cafe.thumbnails.all()]
         for url in thum_urls:
             if url not in existing_thumbnail_urls:
-                Thumbnail.objects.create(cafe=cafe, url=url)
+                Thumbnail.objects.create(cafe_id=cafe, url=url)
 
         return cafe
 
