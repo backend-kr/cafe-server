@@ -1,7 +1,8 @@
 from rest_framework.permissions import AllowAny
 from rest_framework.response import Response
 from api.bases.cafe.models import Cafe
-from api.versioned.v1.cafe.serializers import CafeSerializer, PointSerializer, MenuSerializer, CafeDetailSerializer
+from api.versioned.v1.cafe.serializers import CafeSerializer, PointSerializer, MenuSerializer, CafeDetailSerializer, \
+    CafeCreateSerializer
 from common.viewsets import MappingViewSetMixin
 from rest_framework import viewsets
 from rest_framework import status
@@ -34,7 +35,15 @@ class CafeViewSet(MappingViewSetMixin,
     queryset = Cafe.objects.all()
     lookup_field = 'title'
     serializer_class = CafeSerializer
+    serializer_action_map = {
+        "create": CafeCreateSerializer
+    }
 
+    def create(self, request, *args, **kwargs):
+        serializer = self.get_serializer(data=request.data)
+        serializer.is_valid(raise_exception=True)
+        business_hours_start, business_hours_end = eval(serializer.data['business_hours'])
+        return True
     def retrieve(self, request, *args, **kwargs):
         def retrieve_cafe_detail(cafe):
             cafe_detail = caches['replica'].get(f'cafes_detail_{cafe.cafe_id}')

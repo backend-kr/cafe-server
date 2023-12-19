@@ -2,6 +2,8 @@ from rest_framework import serializers
 import datetime
 from api.bases.cafe.models import Cafe, Thumbnail, Menu, MenuImage, Option, CafeCategory
 
+import arrow
+
 
 class ThumbnailSerializer(serializers.ModelSerializer):
     class Meta:
@@ -179,3 +181,49 @@ class CafeSerializer(serializers.ModelSerializer):
         return cafe
 
 
+
+class CafeCreateSerializer(serializers.ModelSerializer):
+    cafe_id = serializers.CharField()
+    title = serializers.CharField()
+    address = serializers.CharField()
+    road_address = serializers.CharField()
+    latitude = serializers.CharField()
+    longitude = serializers.CharField()
+    tel = serializers.CharField()
+    home_page = serializers.CharField()
+    description = serializers.CharField()
+    business_hours = serializers.CharField()
+    thumUrls = serializers.ListField(child=serializers.URLField())
+    menu_info = serializers.CharField()
+
+    class Meta:
+        model = Cafe
+        fields = ('cafe_id', 'title', 'address', 'road_address', 'latitude',
+                  'longitude', 'tel', 'home_page', 'description', 'business_hours',
+                  'thumUrls', 'menu_info', )
+
+    def validate_business_hours(self, value):
+        start_time_str, end_time_str = value.split('~')
+        start_time_str = self._get_arrow_datetime(start_time_str)
+        end_time_str = self._get_arrow_datetime(end_time_str)
+        return start_time_str, end_time_str
+
+
+    def _get_arrow_datetime(self, value):
+        date_part = value[:8]
+        time_part = value[8:]
+
+        date = arrow.get(date_part, 'YYYYMMDD')
+
+        hours = int(time_part[:2])
+        minutes = int(time_part[2:])
+
+        if hours >= 24:
+            days_to_add = hours // 24
+            hours %= 24
+
+            date = date.shift(days=days_to_add).replace(hour=hours, minute=minutes)
+        else:
+            date = date.replace(hour=hours, minute=minutes)
+
+        return date.format('HH:mm')
