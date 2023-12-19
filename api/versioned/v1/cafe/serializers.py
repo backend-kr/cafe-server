@@ -98,39 +98,75 @@ class CafeSerializer(serializers.ModelSerializer):
         )
 
 
-    def to_internal_value(self, data):
-        business_hours = data.pop('business_hours', None)
-        if business_hours:
-            start_time_str, end_time_str = business_hours.split('~')
 
-            if end_time_str[-4:] >= '2400':
-                # Convert a date and time to a datetime.datetime object.
-                end_time_dt = datetime.datetime.strptime(end_time_str[:-4], '%Y%m%d')
+class CafeBatchListSerializer(serializers.ModelSerializer):
+    cafe_id = serializers.CharField()
+    title = serializers.CharField()
+    address = serializers.CharField()
+    road_address = serializers.CharField()
+    latitude = serializers.CharField()
+    longitude = serializers.CharField()
+    tel = serializers.CharField()
+    home_page = serializers.CharField()
+    description = serializers.CharField()
+    business_hours = serializers.CharField()
+    thumUrls = serializers.ListField(child=serializers.URLField())
+    menu_info = serializers.CharField()
 
-                # Calculate the overtime value.
-                exceeded_hours = int(end_time_str[-4:-2]) // 24
-                remaining_hours = int(end_time_str[-4:-2]) % 24
+    class Meta:
+        model = Cafe
+        fields = ('cafe_id', 'title', 'address', 'road_address', 'latitude',
+                  'longitude', 'tel', 'home_page', 'description', 'business_hours',
+                  'thumUrls', 'menu_info', )
 
-                # Add days by the amount of time exceeded.
-                end_time_dt += datetime.timedelta(days=exceeded_hours)
+    def to_representation(self, instance):
+        business_hours = instance['business_hours']
+        start_time_str, end_time_str = business_hours.split('~')
+        instance['business_hours_start'] = self._get_arrow_datetime(start_time_str)
+        instance['business_hours_end'] = self._get_arrow_datetime(end_time_str)
+        return instance
 
-                # Add the remaining time value.
-                end_time_dt += datetime.timedelta(hours=remaining_hours, minutes=int(end_time_str[-2:]))
+    def _get_arrow_datetime(self, value):
+        date_part = value[:8]
+        time_part = value[8:]
 
-                # Update end_time_str with the corrected time value.
-                end_time_str = end_time_dt.strftime('%Y%m%d%H%M')
+        date = arrow.get(date_part, 'YYYYMMDD')
 
-            start_time = datetime.datetime.strptime(start_time_str.strip()[8:], '%H%M').time()
-            end_time = datetime.datetime.strptime(end_time_str.strip()[8:], '%H%M').time()
-            data['business_hours_start'] = start_time
-            data['business_hours_end'] = end_time
+        hours = int(time_part[:2])
+        minutes = int(time_part[2:])
+
+        if hours >= 24:
+            days_to_add = hours // 24
+            hours %= 24
+
+            date = date.shift(days=days_to_add).replace(hour=hours, minute=minutes)
         else:
-            start_time = None
-            end_time = None
-        data['business_hours_start'] = start_time
-        data['business_hours_end'] = end_time
-        data = super().to_internal_value(data=data)
-        return data
+            date = date.replace(hour=hours, minute=minutes)
+
+        return date.format('HH:mm')
+
+
+class CafeCreateSerializer(serializers.ModelSerializer):
+    cafe_id = serializers.CharField()
+    title = serializers.CharField()
+    address = serializers.CharField()
+    road_address = serializers.CharField()
+    latitude = serializers.CharField()
+    longitude = serializers.CharField()
+    tel = serializers.CharField()
+    home_page = serializers.CharField()
+    description = serializers.CharField()
+    business_hours_start = serializers.TimeField(format='%H:%M', input_formats=['%H:%M', '%I:%M%p'])
+    business_hours_end = serializers.TimeField(format='%H:%M', input_formats=['%H:%M', '%I:%M%p'])
+    thumUrls = serializers.ListField(child=serializers.URLField())
+    menu_info = serializers.CharField()
+
+    class Meta:
+        model = Cafe
+        fields = ('cafe_id', 'title', 'address', 'road_address', 'latitude',
+                  'longitude', 'tel', 'home_page', 'description', 'business_hours_start', 'business_hours_end',
+                  'thumUrls', 'menu_info', )
+
 
     def create(self, validated_data):
         menu_info = validated_data.pop('menu_info')
@@ -164,7 +200,7 @@ class CafeSerializer(serializers.ModelSerializer):
 
             # 한 카페에서 같은 메뉴의 이름이 중복되는 경우가 있음
             if name in existing_menu_names:
-                menus_with_same_name = Menu.objects.filter(cafe=cafe, name=name)
+                menus_with_same_name = Menu.objects.filter(cafe_id=cafe, name=name)
                 if menus_with_same_name.exists():
                     menu = menus_with_same_name.first()
                     menu.price = price
@@ -179,51 +215,3 @@ class CafeSerializer(serializers.ModelSerializer):
                 Thumbnail.objects.create(cafe_id=cafe, url=url)
 
         return cafe
-
-
-
-class CafeCreateSerializer(serializers.ModelSerializer):
-    cafe_id = serializers.CharField()
-    title = serializers.CharField()
-    address = serializers.CharField()
-    road_address = serializers.CharField()
-    latitude = serializers.CharField()
-    longitude = serializers.CharField()
-    tel = serializers.CharField()
-    home_page = serializers.CharField()
-    description = serializers.CharField()
-    business_hours = serializers.CharField()
-    thumUrls = serializers.ListField(child=serializers.URLField())
-    menu_info = serializers.CharField()
-
-    class Meta:
-        model = Cafe
-        fields = ('cafe_id', 'title', 'address', 'road_address', 'latitude',
-                  'longitude', 'tel', 'home_page', 'description', 'business_hours',
-                  'thumUrls', 'menu_info', )
-
-    def validate_business_hours(self, value):
-        start_time_str, end_time_str = value.split('~')
-        start_time_str = self._get_arrow_datetime(start_time_str)
-        end_time_str = self._get_arrow_datetime(end_time_str)
-        return start_time_str, end_time_str
-
-
-    def _get_arrow_datetime(self, value):
-        date_part = value[:8]
-        time_part = value[8:]
-
-        date = arrow.get(date_part, 'YYYYMMDD')
-
-        hours = int(time_part[:2])
-        minutes = int(time_part[2:])
-
-        if hours >= 24:
-            days_to_add = hours // 24
-            hours %= 24
-
-            date = date.shift(days=days_to_add).replace(hour=hours, minute=minutes)
-        else:
-            date = date.replace(hour=hours, minute=minutes)
-
-        return date.format('HH:mm')
