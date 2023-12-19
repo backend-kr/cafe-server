@@ -99,7 +99,7 @@ class CafeSerializer(serializers.ModelSerializer):
 
 
 
-class CafeBatchListSerializer(serializers.ModelSerializer):
+class CafeCreateSerializer(serializers.ModelSerializer):
     cafe_id = serializers.CharField()
     title = serializers.CharField()
     address = serializers.CharField()
@@ -119,12 +119,21 @@ class CafeBatchListSerializer(serializers.ModelSerializer):
                   'longitude', 'tel', 'home_page', 'description', 'business_hours',
                   'thumUrls', 'menu_info', )
 
-    def to_representation(self, instance):
-        business_hours = instance['business_hours']
-        start_time_str, end_time_str = business_hours.split('~')
-        instance['business_hours_start'] = self._get_arrow_datetime(start_time_str)
-        instance['business_hours_end'] = self._get_arrow_datetime(end_time_str)
-        return instance
+
+    def validate_business_hours(self, value):
+        start_time_str, end_time_str = value.split('~')
+        return {
+            'business_hours_start': self._get_arrow_datetime(start_time_str),
+            'business_hours_end': self._get_arrow_datetime(end_time_str)
+        }
+
+    def validate(self, data):
+        # Extract and split business_hours
+        business_hours = data.pop('business_hours', None)
+        if business_hours:
+            data['business_hours_start'] = business_hours['business_hours_start']
+            data['business_hours_end'] = business_hours['business_hours_end']
+        return data
 
     def _get_arrow_datetime(self, value):
         date_part = value[:8]
@@ -144,29 +153,6 @@ class CafeBatchListSerializer(serializers.ModelSerializer):
             date = date.replace(hour=hours, minute=minutes)
 
         return date.format('HH:mm')
-
-
-class CafeCreateSerializer(serializers.ModelSerializer):
-    cafe_id = serializers.CharField()
-    title = serializers.CharField()
-    address = serializers.CharField()
-    road_address = serializers.CharField()
-    latitude = serializers.CharField()
-    longitude = serializers.CharField()
-    tel = serializers.CharField()
-    home_page = serializers.CharField()
-    description = serializers.CharField()
-    business_hours_start = serializers.TimeField(format='%H:%M', input_formats=['%H:%M', '%I:%M%p'])
-    business_hours_end = serializers.TimeField(format='%H:%M', input_formats=['%H:%M', '%I:%M%p'])
-    thumUrls = serializers.ListField(child=serializers.URLField())
-    menu_info = serializers.CharField()
-
-    class Meta:
-        model = Cafe
-        fields = ('cafe_id', 'title', 'address', 'road_address', 'latitude',
-                  'longitude', 'tel', 'home_page', 'description', 'business_hours_start', 'business_hours_end',
-                  'thumUrls', 'menu_info', )
-
 
     def create(self, validated_data):
         menu_info = validated_data.pop('menu_info')
