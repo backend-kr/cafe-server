@@ -299,7 +299,7 @@ APPEND_SLASH = True
 CACHES = {
     "default": {
         "BACKEND": "django_redis.cache.RedisCache",
-        "LOCATION": "redis://10.10.162.33:6379/0",
+        "LOCATION": "redis://localhost:6379/0",
         "OPTIONS": {
             "CLIENT_CLASS": "django_redis.client.DefaultClient",
             "PASSWORD": "changeme",
@@ -307,7 +307,7 @@ CACHES = {
     },
     "replica": {
         "BACKEND": "django_redis.cache.RedisCache",
-        "LOCATION": "redis://10.10.162.33:6380/1",
+        "LOCATION": "redis://localhost:6380/1",
         "OPTIONS": {
             "CLIENT_CLASS": "django_redis.client.DefaultClient",
         }

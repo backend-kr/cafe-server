@@ -34,10 +34,10 @@ class CafeViewSet(MappingViewSetMixin,
     permission_classes = [AllowAny, ]
     queryset = Cafe.objects.all()
     lookup_field = 'title'
-    serializer_class = CafeSerializer
     serializer_action_map = {
         "create": CafeCreateSerializer
     }
+    serializer_class = CafeSerializer
 
     def create(self, request, *args, **kwargs):
         serializer = self.get_serializer(data=request.data, many=True)

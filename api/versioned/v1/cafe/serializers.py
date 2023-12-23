@@ -109,54 +109,21 @@ class CafeCreateSerializer(serializers.ModelSerializer):
     tel = serializers.CharField()
     home_page = serializers.CharField()
     description = serializers.CharField()
-    business_hours = serializers.CharField()
-    thumUrls = serializers.ListField(child=serializers.URLField())
-    menu_info = serializers.CharField()
+    business_hours_start = serializers.CharField()
+    business_hours_end = serializers.CharField()
+    thumbnails = serializers.ListField(child=serializers.URLField())
+    menu_info = serializers.DictField(child=serializers.IntegerField())
 
     class Meta:
         model = Cafe
         fields = ('cafe_id', 'title', 'address', 'road_address', 'latitude',
-                  'longitude', 'tel', 'home_page', 'description', 'business_hours',
-                  'thumUrls', 'menu_info', )
+                  'longitude', 'tel', 'home_page', 'description', 'business_hours_start',
+                  'business_hours_end', 'thumbnails', 'menu_info', )
 
-
-    def validate_business_hours(self, value):
-        start_time_str, end_time_str = value.split('~')
-        return {
-            'business_hours_start': self._get_arrow_datetime(start_time_str),
-            'business_hours_end': self._get_arrow_datetime(end_time_str)
-        }
-
-    def validate(self, data):
-        # Extract and split business_hours
-        business_hours = data.pop('business_hours', None)
-        if business_hours:
-            data['business_hours_start'] = business_hours['business_hours_start']
-            data['business_hours_end'] = business_hours['business_hours_end']
-        return data
-
-    def _get_arrow_datetime(self, value):
-        date_part = value[:8]
-        time_part = value[8:]
-
-        date = arrow.get(date_part, 'YYYYMMDD')
-
-        hours = int(time_part[:2])
-        minutes = int(time_part[2:])
-
-        if hours >= 24:
-            days_to_add = hours // 24
-            hours %= 24
-
-            date = date.shift(days=days_to_add).replace(hour=hours, minute=minutes)
-        else:
-            date = date.replace(hour=hours, minute=minutes)
-
-        return date.format('HH:mm')
 
     def create(self, validated_data):
         menu_info = validated_data.pop('menu_info')
-        thum_urls = validated_data.pop('thumUrls')
+        thum_urls = validated_data.pop('thumbnails')
 
         # Cafe 모델 인스턴스를 생성하거나 업데이트합니다.
         cafe, created = Cafe.objects.update_or_create(
@@ -168,34 +135,32 @@ class CafeCreateSerializer(serializers.ModelSerializer):
         self._process_thumbnails(cafe, thum_urls)
         return cafe
 
-
     def _process_menus(self, cafe, menu_info):
         menus = cafe.menu_set.all()
         existing_menu_names = [menu.name for menu in menus]
-        incoming_menu_infos = menu_info.split(' | ')
-        incoming_menu_names = [menu_info.rsplit(' ', 1)[0] for menu_info in incoming_menu_infos]
+        payload_menu_names = menu_info.keys()
+
+        # 삭제할 메뉴 처리
         for menu in menus:
-            if menu.name not in incoming_menu_names:
+            if menu.name not in payload_menu_names:
                 menu.delete()
 
-        for menu_info in incoming_menu_infos:
-            # FIXME: 아이스초코 변동가격(업주문의)
-            name_price = menu_info.rsplit(' ', 1)
-            name = name_price[0]
-            price = name_price[1]
-            try:
-                price = int(price.replace(',', ''))
-            except (ValueError, TypeError):
-                price = 0
-
-            # 한 카페에서 같은 메뉴의 이름이 중복되는 경우가 있음
+        # 메뉴 생성 또는 업데이트 처리
+        for name, price in menu_info.items():
+            # 가격이 정수가 아닌 경우 처리
+            if not isinstance(price, int):
+                try:
+                    price = int(price)
+                except ValueError:
+                    price = 0
+            # 메뉴가 이미 존재하는 경우 업데이트
             if name in existing_menu_names:
-                menus_with_same_name = Menu.objects.filter(cafe_id=cafe, name=name)
-                if menus_with_same_name.exists():
-                    menu = menus_with_same_name.first()
+                menu = Menu.objects.filter(cafe_id=cafe, name=name).first()
+                if menu:
                     menu.price = price
                     menu.save()
             else:
+                # 새 메뉴 생성
                 Menu.objects.create(cafe_id=cafe, name=name, price=price)
 
     def _process_thumbnails(self, cafe, thum_urls):
