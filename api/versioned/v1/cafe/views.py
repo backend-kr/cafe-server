@@ -44,6 +44,7 @@ class CafeViewSet(MappingViewSetMixin,
         if serializer.is_valid(raise_exception=True):
             cafes = serializer.save()
         return Response({'created': len(cafes)}, status=status.HTTP_201_CREATED)
+
     def retrieve(self, request, *args, **kwargs):
         def retrieve_cafe_detail(cafe):
             cafe_detail = caches['replica'].get(f'cafes_detail_{cafe.cafe_id}')
