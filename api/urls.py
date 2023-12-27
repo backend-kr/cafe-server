@@ -22,7 +22,7 @@ for path, dirs, files, in os.walk(folder):
 
         _include = 'api.versioned.{}.{}.urls'.format(version, api_name)
 
-        urlpatterns.append(re_path(r'^api/' + version + '/' + api_name + '/', include(_include)))
+        urlpatterns.append(re_path(r'^' + version + '/' + api_name + '/', include(_include)))
         version_map_dict[version].append(re_path(r'^' + api_name + '/', include(_include), name=_include))
 
 if settings.DEBUG:
@@ -40,4 +40,8 @@ if settings.DEBUG:
             ),
             permission_classes=(permissions.AllowAny,),
         )
-        urlpatterns = [re_path(r'^api/' + version + '/docs/$', sv.with_ui('swagger', cache_timeout=300)),] + urlpatterns
+        urlpatterns = [re_path(r'^' + version + '/docs/$', sv.with_ui('swagger', cache_timeout=0)),
+                       re_path(r'^' + version + '/swagger/(?P<format>\.json|\.yaml)$', sv.without_ui(cache_timeout=0)),
+                       re_path(r'^' + version + '/swagger/$', sv.with_ui('swagger', cache_timeout=0)),
+                       re_path(r'^' + version + '/redoc/$', sv.with_ui('redoc', cache_timeout=0))
+                       ] + urlpatterns
