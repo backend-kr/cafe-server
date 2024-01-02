@@ -15,7 +15,7 @@ CACHES = {
         "OPTIONS": {
             "CLIENT_CLASS": "django_redis.client.DefaultClient",
         }
-    }
+    },
     "replica": {
         "BACKEND": "django_redis.cache.RedisCache",
         "LOCATION": "redis://redis-slave:6379/0",
