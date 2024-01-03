@@ -13,6 +13,7 @@ django-axes==5.40.1
 django-cors-headers==3.14.0
 django-elasticsearch-dsl==7.3
 django-encrypted-model-fields==0.6.5
+django-filter==23.5
 django-ipware==4.0.2
 django-model-utils==4.3.1
 django-redis==5.2.0
