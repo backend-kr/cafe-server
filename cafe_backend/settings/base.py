@@ -157,6 +157,7 @@ REST_FRAMEWORK = {
     ),
     'DEFAULT_VERSIONING_CLASS': 'rest_framework.versioning.URLPathVersioning',
     'DEFAULT_PAGINATION_CLASS': 'common.pagenator.StandardPagination',
+    'DEFAULT_FILTER_BACKENDS': ['django_filters.rest_framework.DjangoFilterBackend'],
 }
 
 # Internationalization

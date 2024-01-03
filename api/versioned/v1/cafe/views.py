@@ -40,10 +40,11 @@ class CafeViewSet(MappingViewSetMixin,
     serializer_class = CafeSerializer
 
     def create(self, request, *args, **kwargs):
-        serializer = self.get_serializer(data=request.data, many=True)
+        created_cafes_count = 0
+        serializer = self.get_serializer(data=request.data)
         if serializer.is_valid(raise_exception=True):
-            cafes = serializer.save()
-        return Response({'created': len(cafes)}, status=status.HTTP_201_CREATED)
+            serializer.save()
+        return Response({'created': created_cafes_count}, status=status.HTTP_201_CREATED)
 
     def retrieve(self, request, *args, **kwargs):
         def retrieve_cafe_detail(cafe):
