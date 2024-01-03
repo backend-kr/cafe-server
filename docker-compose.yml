@@ -9,6 +9,9 @@ services:
     environment:
       - RUNNING_ENV=local
       - TZ=Asia/Seoul
+    volumes:
+      - ${PATH}/secrets.json:/webapp/server/cafe_backend/settings/secrets.json
+      - ${PATH}/logs:/webapp/server/logs
     ports:
       - "0.0.0.0:8001:80"
 
