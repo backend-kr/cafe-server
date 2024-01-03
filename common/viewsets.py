@@ -34,6 +34,11 @@ class AcceptObjectOrPermissionMixin(BasePermission):
 class MappingViewSetMixin(object):
     serializer_action_map = {}
     permission_classes_map = {}
+    queryset_map = {}
+
+    def get_queryset(self):
+        return self.queryset_map.get(self.action, self.queryset)
+
 
     def get_permissions(self):
         permission_classes = self.permission_classes
