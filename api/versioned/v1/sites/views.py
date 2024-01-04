@@ -22,8 +22,10 @@ class SitesViewSet(MappingViewSetMixin,
     serializer_class = CafeSerializer
     def list(self, request, *args, **kwargs):
         query_params = request.query_params
-        filter_value = query_params.get('category', None)
+        filter_value = query_params.get('category', "0")
         queryset = self.queryset_map.get(filter_value)
+        queryset = self.filter_queryset(queryset)
+
         page = self.paginate_queryset(queryset)
         serializer = self.get_serializer(page, many=True)
         return self.get_paginated_response(serializer.data)
