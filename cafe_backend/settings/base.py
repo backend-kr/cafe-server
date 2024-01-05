@@ -75,7 +75,9 @@ INSTALLED_APPS = [
     'drf_yasg',
     'django_redis',
     'elasticapm.contrib.django',
-    'api.bases.cafe'
+    'api.bases.cafe',
+    'api.bases.restaurants',
+    'api.bases.sights'
 ]
 
 MIDDLEWARE = [
