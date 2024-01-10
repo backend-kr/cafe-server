@@ -123,6 +123,7 @@ CORS_ORIGIN_ALLOW_ALL = True
 DATABASES = get_secret('DATABASES')
 TR_BACKEND = get_secret("TR_BACKEND")
 APM_URL = get_secret("APM_URL")
+LOGSTASH_URL = get_secret("LOGSTASH_URL")
 # Password validation
 # https://docs.djangoproject.com/en/4.1/ref/settings/#auth-password-validators
 
@@ -221,7 +222,7 @@ LOGGING = {
         'logstash': {
             'level': 'DEBUG',
             'class': 'logstash.TCPLogstashHandler',
-            'host': '172.30.1.1',
+            'host': LOGSTASH_URL,
             'port': 50000,
             'version': 1,
             'message_type': 'django',
