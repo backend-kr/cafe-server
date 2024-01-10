@@ -7,7 +7,7 @@ services:
     networks:
       - internal_network
     environment:
-      - RUNNING_ENV=local
+      - RUNNING_ENV=base
       - TZ=Asia/Seoul
     volumes:
       - ${ENV_PATH}/secrets.json:/webapp/server/cafe_backend/settings/secrets.json
