@@ -249,13 +249,7 @@ LOGGING = {
             'filters': ['require_debug_true'],
             'class': 'logging.StreamHandler',
             'formatter': 'django.request',
-        },
-        'file': {
-            'level': 'DEBUG',  # Adjust the log level as needed.
-            'class': 'logging.FileHandler',
-            'filename': 'logs/server.log',  # Specify the log file path here.
-            'formatter': 'verbose',  # Use the formatter defined above.
-        },
+        }
     },
     'loggers': {
         'django.request': {
