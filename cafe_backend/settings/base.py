@@ -121,8 +121,8 @@ CORS_ORIGIN_ALLOW_ALL = True
 # Database
 # https://docs.djangoproject.com/en/4.1/ref/settings/#databases
 DATABASES = get_secret('DATABASES')
-
 TR_BACKEND = get_secret("TR_BACKEND")
+APM_URL = get_secret("APM_URL")
 # Password validation
 # https://docs.djangoproject.com/en/4.1/ref/settings/#auth-password-validators
 
@@ -173,12 +173,12 @@ USE_I18N = True
 
 USE_TZ = True
 
-# ELASTIC_APM = {
-#     "SERVICE_NAME": "cafe_manager",
-#     "DEBUG": True,
-#     "CAPTURE_BODY": "transactions",
-#     'SERVER_URL': 'http://221.155.148.197:8200',
-# }
+ELASTIC_APM = {
+    "SERVICE_NAME": "cafe_manager",
+    "DEBUG": True,
+    "CAPTURE_BODY": "transactions",
+    'SERVER_URL': APM_URL,
+}
 
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/4.1/howto/static-files/
