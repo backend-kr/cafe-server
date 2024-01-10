@@ -298,22 +298,3 @@ SWAGGER_SETTINGS = {
 
 APPEND_SLASH = True
 # DATABASE_ROUTERS = ("common.db_routers.MasterSlaveRouter",)
-
-CACHES = {
-    "default": {
-        "BACKEND": "django_redis.cache.RedisCache",
-        "LOCATION": "redis://localhost:6379/0",
-        "OPTIONS": {
-            "CLIENT_CLASS": "django_redis.client.DefaultClient",
-            "PASSWORD": "changeme",
-        }
-    },
-    "replica": {
-        "BACKEND": "django_redis.cache.RedisCache",
-        "LOCATION": "redis://localhost:6380/1",
-        "OPTIONS": {
-            "CLIENT_CLASS": "django_redis.client.DefaultClient",
-        }
-    }
-}
-
