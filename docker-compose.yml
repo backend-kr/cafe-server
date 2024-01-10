@@ -11,7 +11,7 @@ services:
       - TZ=Asia/Seoul
     volumes:
       - ${ENV_PATH}/secrets.json:/webapp/server/cafe_backend/settings/secrets.json
-      - ${ENV_PATH}/logs:/webapp/server/logs:rw
+      - ./logs:/webapp/server/logs:rw
     ports:
       - "0.0.0.0:8001:80"
 
