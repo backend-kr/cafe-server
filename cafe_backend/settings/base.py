@@ -196,7 +196,7 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 EXPIRING_TOKEN_LIFESPAN = 60 * 30
 
-LOG_DIR_PATH = os.path.join(os.getcwd(), 'logs')
+LOG_DIR_PATH = os.path.join(BASE_DIR, 'logs')
 
 if not os.path.exists(LOG_DIR_PATH):
     os.mkdir(LOG_DIR_PATH)
