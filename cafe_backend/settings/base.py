@@ -252,6 +252,11 @@ LOGGING = {
         }
     },
     'loggers': {
+        'django': {
+            'handlers': ['file'],  # Use the 'file' handler for Django logs.
+            'level': 'DEBUG',  # Adjust the log level as needed.
+            'propagate': True,
+        },
         'django.request': {
             'handlers': ['django.request', 'console', 'logstash'],
             'level': 'DEBUG',
