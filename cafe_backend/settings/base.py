@@ -219,12 +219,6 @@ LOGGING = {
         }
     },
     'handlers': {
-        'file': {
-            'level': 'DEBUG', 
-            'class': 'logging.FileHandler',
-            'filename': 'logs/server.log', 
-            'formatter': 'verbose',  
-        },
         'logstash': {
             'level': 'DEBUG',
             'class': 'logstash.TCPLogstashHandler',
@@ -259,8 +253,8 @@ LOGGING = {
     },
     'loggers': {
         'django': {
-            'handlers': ['file'],  
-            'level': 'DEBUG', 
+            'handlers': ['file'],  # Use the 'file' handler for Django logs.
+            'level': 'DEBUG',  # Adjust the log level as needed.
             'propagate': True,
         },
         'django.request': {
