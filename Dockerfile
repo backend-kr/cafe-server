@@ -17,7 +17,7 @@ ENV NGINX_SET_REAL_IP_FROM="172.18.0.0/16"\
     UWSGI_PID="/webapp/uwsgi/webapp.pid"\
     UWSGI_CHDIR="/webapp/server"\
     UWSGI_MODULE="cafe_backend.wsgi"\
-    RUNNING_ENV="local"
+    RUNNING_ENV="base"
 
 RUN mv ./conf/run.sh / \
     && chmod 755 /run.sh \

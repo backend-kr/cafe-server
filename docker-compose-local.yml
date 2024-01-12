@@ -5,30 +5,12 @@ services:
     build:
       context: .
       dockerfile: Dockerfile
-    container_name: cafe-moa
-    networks:
-      - internal_network
+    container_name: my-tour-backend
     environment:
-      - RUNNING_ENV=local
+      - RUNNING_ENV=base
       - TZ=Asia/Seoul
     volumes:
       - ./:/webapp/server/
     ports:
       - "8001:80"
 
-  redis-master:
-    image: redis:latest
-    container_name: redis-master
-    networks:
-      - internal_network
-
-  redis-slave:
-    image: redis:latest
-    container_name: redis-slave
-    networks:
-      - internal_network
-    command: redis-server --slaveof redis-master 6379
-
-networks:
-  internal_network:
-    driver: bridge
