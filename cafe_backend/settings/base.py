@@ -124,6 +124,7 @@ CORS_ORIGIN_ALLOW_ALL = True
 DATABASES = get_secret('DATABASES')
 TR_BACKEND = get_secret("TR_BACKEND")
 APM_URL = get_secret("APM_URL")
+LOGSTASH_URL = get_secret("LOGSTASH_URL")
 # Password validation
 # https://docs.djangoproject.com/en/4.1/ref/settings/#auth-password-validators
 
@@ -208,7 +209,7 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 EXPIRING_TOKEN_LIFESPAN = 60 * 30
 
-LOG_DIR_PATH = os.path.join(os.getcwd(), 'logs')
+LOG_DIR_PATH = os.path.join(BASE_DIR, 'logs')
 
 if not os.path.exists(LOG_DIR_PATH):
     os.mkdir(LOG_DIR_PATH)
@@ -234,7 +235,7 @@ LOGGING = {
         'logstash': {
             'level': 'DEBUG',
             'class': 'logstash.TCPLogstashHandler',
-            'host': '172.30.1.1',
+            'host': LOGSTASH_URL,
             'port': 50000,
             'version': 1,
             'message_type': 'django',
@@ -311,22 +312,3 @@ SWAGGER_SETTINGS = {
 
 APPEND_SLASH = True
 # DATABASE_ROUTERS = ("common.db_routers.MasterSlaveRouter",)
-
-CACHES = {
-    "default": {
-        "BACKEND": "django_redis.cache.RedisCache",
-        "LOCATION": "redis://localhost:6379/0",
-        "OPTIONS": {
-            "CLIENT_CLASS": "django_redis.client.DefaultClient",
-            "PASSWORD": "changeme",
-        }
-    },
-    "replica": {
-        "BACKEND": "django_redis.cache.RedisCache",
-        "LOCATION": "redis://localhost:6380/1",
-        "OPTIONS": {
-            "CLIENT_CLASS": "django_redis.client.DefaultClient",
-        }
-    }
-}
-
