@@ -12,5 +12,5 @@ services:
     volumes:
       - ./:/webapp/server/
     ports:
-      - "8001:80"
+      - "8080:8000"
 

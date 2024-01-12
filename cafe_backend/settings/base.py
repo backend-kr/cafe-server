@@ -91,6 +91,7 @@ MIDDLEWARE = [
     'corsheaders.middleware.CorsMiddleware',
     'elasticapm.contrib.django.middleware.TracingMiddleware',
     'djangorestframework_camel_case.middleware.CamelCaseMiddleWare',
+    'common.middleware.LoggingMiddleware',
 ]
 
 ROOT_URLCONF = 'cafe_backend.urls'
@@ -209,7 +210,7 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 EXPIRING_TOKEN_LIFESPAN = 60 * 30
 
-LOG_DIR_PATH = os.path.join(BASE_DIR, 'logs')
+LOG_DIR_PATH = os.path.join(os.getcwd(), 'logs')
 
 if not os.path.exists(LOG_DIR_PATH):
     os.mkdir(LOG_DIR_PATH)
@@ -232,16 +233,6 @@ LOGGING = {
         }
     },
     'handlers': {
-        'logstash': {
-            'level': 'DEBUG',
-            'class': 'logstash.TCPLogstashHandler',
-            'host': LOGSTASH_URL,
-            'port': 50000,
-            'version': 1,
-            'message_type': 'django',
-            'fqdn': True,
-            'tags': ['django'],
-        },
         'django.request': {
             'level': 'DEBUG',
             'class': 'logging.StreamHandler',
@@ -266,20 +257,15 @@ LOGGING = {
     },
     'loggers': {
         'django.request': {
-            'handlers': ['django.request', 'console', 'logstash'],
+            'handlers': ['django.request', 'console'],
             'level': 'DEBUG',
             'propagate': False,
         },
         'django.server': {
-            'handlers': ['django.server', 'console', 'logstash'],
+            'handlers': ['django.server', 'console'],
             'level': 'DEBUG',
             'propagate': False,
-        },
-        'common.db_routers': {
-            'handlers': ['console', 'logstash'],
-            'level': 'DEBUG',
-            'propagate': False,
-        },
+        }
     }
 }
 
