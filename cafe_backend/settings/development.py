@@ -57,3 +57,5 @@ REST_FRAMEWORK = {
     'DEFAULT_PAGINATION_CLASS': 'common.pagenator.StandardPagination',
     'DEFAULT_FILTER_BACKENDS': ['django_filters.rest_framework.DjangoFilterBackend'],
 }
+
+MIDDLEWARE = MIDDLEWARE + ['common.middleware.LoggingMiddleware', ]
