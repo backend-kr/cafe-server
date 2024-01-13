@@ -243,7 +243,7 @@ LOGGING = {
             'level': 'DEBUG',
             'class': 'logging.handlers.TimedRotatingFileHandler',
             'when': "midnight",
-            'backupCount': 0,
+            'backupCount': 7,
             'encoding': 'UTF-8',
             'formatter': 'django.request',
             'filename': 'logs/server.log'
