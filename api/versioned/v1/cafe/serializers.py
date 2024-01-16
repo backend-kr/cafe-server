@@ -100,6 +100,7 @@ class CafeSerializer(serializers.ModelSerializer):
     def to_representation(self, instance):
         instance = super().to_representation(instance=instance)
         instance['id'] = instance.pop('cafe_id')
+        instance['type'] = 'cafe'
         return instance
 
 
