@@ -48,7 +48,10 @@ class RestaurantSerializer(serializers.ModelSerializer):
             'thumbnails', 'description',
         )
 
-
+    def to_representation(self, instance):
+        instance = super().to_representation(instance=instance)
+        instance['id'] = instance.pop('restaurant_id')
+        return instance
 
 class RestaurantCreateSerializer(serializers.ModelSerializer):
     restaurant_id = serializers.CharField()

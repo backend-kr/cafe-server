@@ -97,6 +97,10 @@ class CafeSerializer(serializers.ModelSerializer):
             'thumbnails', 'description',
         )
 
+    def to_representation(self, instance):
+        instance = super().to_representation(instance=instance)
+        instance['id'] = instance.pop('cafe_id')
+        return instance
 
 
 class CafeCreateSerializer(serializers.ModelSerializer):
