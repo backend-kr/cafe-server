@@ -67,30 +67,36 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'django.contrib.sites',
     'django_admin_inline_paginator',
-    'corsheaders',
-    'rest_framework',
-    'rest_framework.authtoken',
+    # Auth
+    'allauth',
+    'allauth.account',
+    'allauth.socialaccount',  # Optional, only if using social auth
     'rest_framework_simplejwt',
+    'rest_framework.authtoken',
+    'dj_rest_auth.registration',
+    'dj_rest_auth',
+    'corsheaders',
+    # ETC
+    'rest_framework',
     'encrypted_model_fields',
     'drf_yasg',
     'django_redis',
-    'elasticapm.contrib.django',
     'api.bases.cafe',
     'api.bases.restaurants',
-    'api.bases.sights'
+    'api.bases.sights',
+    'api.bases.users'
 ]
 
 MIDDLEWARE = [
+    'django.middleware.csrf.CsrfViewMiddleware',
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
-    'django.middleware.csrf.CsrfViewMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
     'corsheaders.middleware.CorsMiddleware',
-    'elasticapm.contrib.django.middleware.TracingMiddleware',
-    'djangorestframework_camel_case.middleware.CamelCaseMiddleWare',
+    'allauth.account.middleware.AccountMiddleware',
     'common.middleware.LoggingMiddleware',
 ]
 
@@ -120,14 +126,10 @@ CORS_ORIGIN_ALLOW_ALL = True
 # CORS_ALLOWED_ORIGINS = ["http://localhost:3000",
 #                         "http://122.47.59.164:8001"]
 
+
 # Database
 # https://docs.djangoproject.com/en/4.1/ref/settings/#databases
 DATABASES = get_secret('DATABASES')
-TR_BACKEND = get_secret("TR_BACKEND")
-APM_URL = get_secret("APM_URL")
-LOGSTASH_URL = get_secret("LOGSTASH_URL")
-# Password validation
-# https://docs.djangoproject.com/en/4.1/ref/settings/#auth-password-validators
 
 AUTH_PASSWORD_VALIDATORS = [
     {
@@ -144,21 +146,26 @@ AUTH_PASSWORD_VALIDATORS = [
     },
 ]
 
+SITE_ID = 1
+ACCOUNT_USER_MODEL_USERNAME_FIELD = 'email'
+ACCOUNT_USERNAME_REQUIRED = False
+ACCOUNT_EMAIL_REQUIRED = True
+ACCOUNT_EMAIL_VERIFICATION = 'optional'
+EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
 REST_FRAMEWORK = {
-    # Use Django's standard `django.contrib.auth` permissions,
-    # or allow read-only access for unauthenticated users.
-    # 'DEFAULT_RENDERER_CLASSES': (
-    #     'djangorestframework_camel_case.render.CamelCaseJSONRenderer',
-    #     'djangorestframework_camel_case.render.CamelCaseBrowsableAPIRenderer',
-    #     # Any other renders
-    # ),
-    # 'DEFAULT_PARSER_CLASSES': (
-    #     # If you use MultiPartFormParser or FormParser, we also have a camel case version
-    #     'djangorestframework_camel_case.parser.CamelCaseFormParser',
-    #     'djangorestframework_camel_case.parser.CamelCaseMultiPartParser',
-    #     'djangorestframework_camel_case.parser.CamelCaseJSONParser',
-    #     # Any other parsers
-    # ),
+    "JSON_UNDERSCOREIZE": {
+        "ignore_keys": ("password1", "password2"),
+    },
+    'DEFAULT_RENDERER_CLASSES': (
+        'djangorestframework_camel_case.render.CamelCaseJSONRenderer',
+        'djangorestframework_camel_case.render.CamelCaseBrowsableAPIRenderer',
+        # Any other renders
+    ),
+    'DEFAULT_PARSER_CLASSES': (
+        'djangorestframework_camel_case.parser.CamelCaseFormParser',
+        'djangorestframework_camel_case.parser.CamelCaseMultiPartParser',
+        'djangorestframework_camel_case.parser.CamelCaseJSONParser',
+    ),
     'DEFAULT_THROTTLE_CLASSES': [
         'rest_framework.throttling.UserRateThrottle',
     ],
@@ -171,6 +178,7 @@ REST_FRAMEWORK = {
     'DEFAULT_AUTHENTICATION_CLASSES': (
         'rest_framework.authentication.SessionAuthentication',
         'rest_framework.authentication.TokenAuthentication',
+        'dj_rest_auth.jwt_auth.JWTCookieAuthentication',
     ),
     'DEFAULT_VERSIONING_CLASS': 'rest_framework.versioning.URLPathVersioning',
     'DEFAULT_PAGINATION_CLASS': 'common.pagenator.StandardPagination',
@@ -188,15 +196,6 @@ USE_I18N = True
 
 USE_TZ = True
 
-ELASTIC_APM = {
-    "SERVICE_NAME": "cafe_manager",
-    "DEBUG": True,
-    "CAPTURE_BODY": "transactions",
-    'SERVER_URL': APM_URL,
-}
-
-# Static files (CSS, JavaScript, Images)
-# https://docs.djangoproject.com/en/4.1/howto/static-files/
 
 STATIC_URL = '/static/'
 STATIC_ROOT = os.path.join(BASE_DIR, '../static')
@@ -253,18 +252,28 @@ LOGGING = {
             'filters': ['require_debug_true'],
             'class': 'logging.StreamHandler',
             'formatter': 'django.request',
-        }
+        },
+        'logstash': {
+            'level': 'DEBUG',
+            'class': 'logstash.LogstashHandler',
+            'host': '0.0.0.0',
+            'port': 50000,  # Default value: 5959
+            'version': 1,
+        },
     },
     'loggers': {
         'django.request': {
-            'handlers': ['django.request', 'console'],
+            'handlers': ['django.request', 'console', 'logstash'],
             'level': 'DEBUG',
             'propagate': False,
         },
         'django.server': {
-            'handlers': ['django.server', 'console'],
+            'handlers': ['django.server', 'console', 'logstash'],
             'level': 'DEBUG',
             'propagate': False,
+        },
+        'django': {
+            'handlers': ['logstash'],
         }
     }
 }
@@ -298,3 +307,13 @@ SWAGGER_SETTINGS = {
 
 APPEND_SLASH = True
 # DATABASE_ROUTERS = ("common.db_routers.MasterSlaveRouter",)
+
+
+
+AUTHENTICATION_BACKENDS = (
+    'django.contrib.auth.backends.ModelBackend',
+    'allauth.account.auth_backends.AuthenticationBackend',
+)
+
+AUTH_USER_MODEL = 'users.User'
+LOGIN_REDIRECT_URL = '/api/v1/swagger/'
